@@ -1,17 +1,13 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.core.urlresolvers import reverse
 from .forms import UserLoginForm, UserRegistrationForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 # Create your views here.
-def index(request):
-    """A view that displays the index page"""
-    return render(request, "index.html")
-
-
 @login_required
 def logout(request):
     """A view that logs the user out and redirects back to the index page"""

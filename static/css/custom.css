@@ -1,6 +1,5 @@
 body {
     font-family: Arial;
-    padding-top: 50px;
 }
 
 footer {
@@ -17,4 +16,14 @@ footer {
 
 .accountform {
     padding-top: 20px;
+}
+
+/*------------------------- Index page -------------------------*/
+
+.home-page-banner {
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-colored-powder-color-powder-ink-image_15659.jpg");
+    height: 45vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
 }
