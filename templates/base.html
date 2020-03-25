@@ -13,37 +13,33 @@
 </head>
 
 <body>
-{% block nav %}
 	<header>
-        <div class="container-fluid home-page-banner">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="{% url 'index' %}">
-                            <img src="/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">eShop
-                        </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                    <div id="navbarCollapse" class="collapse navbar-collapse">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Store</a></li>
-                            {% if user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
-                            {%  else %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Sign In</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="{% url 'index' %}">eShop</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+				</div>
+				<div id="navbarCollapse" class="collapse navbar-collapse">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item"><a class="nav-link" href="{% url 'all_games' %}">Store</a></li>
+						{% if user.is_authenticated %}
+						<li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+						{%  else %}
+						<li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Sign In</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
 	</header>
-    {% endblock nav %}
+
+	<!-- Messages Block -->
 	{% if messages %}
 	<div class="alert alert-success">
 		<div class="messages">
@@ -54,10 +50,12 @@
 	</div>
 	{% endif %}
 
-    <!-- Main content -->
-	{% block content %} {% endblock %}
+	<!-- Main content -->
+	<div class="container">
+		{% block content %} {% endblock %}
+	</div>
 
-    <!-- Footer -->
+	<!-- Footer -->
 	<footer>
 		<div class="container">
 			<p>Made by Code Institute bootcampers</p>

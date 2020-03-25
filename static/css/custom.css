@@ -27,3 +27,36 @@ footer {
     background-size: cover;
     padding: 0;
 }
+
+.container-fluid {
+    background-color: #25c2ec;  
+    height: 45vh;
+}
+
+.slide {
+    width: 70%;
+    height: 90%;
+    margin: 0 -250px;
+    background-color: black;
+}
+
+.slide:hover {
+    transform: translateX(350px);
+    transition: 0.35s ease-in-out;
+}
+
+
+/*------------------------- Index page -------------------------*/
+
+.game {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.games-row {
+    margin-top: 30px;
+}

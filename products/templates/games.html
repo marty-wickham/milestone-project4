@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row games-row">
+    {% for game in games %}
+        <div class="col-10 col-offset-1 col-sm-offset-0 col-sm-6 col-md-4 panel">
+            <div class="game" style="background-image: url('{{ MEDIA_URL }}{{ game.image}}')"></div>
+
+            <h3>{{ game.name }}</h3>
+            <p class="game-description">{{ game.description }}</p>
+            <p>{{ game.price }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

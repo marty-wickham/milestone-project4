@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.core.urlresolvers import reverse
 from .forms import UserLoginForm, UserRegistrationForm
-from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -25,16 +24,16 @@ def login(request):
 
     if request.method == 'POST':
         login_form = UserLoginForm(request.POST)
+
         if login_form.is_valid():
             user = auth.authenticate(request.POST['username'],
                                      password=request.POST['password'])
-            messages.success(request, "You have successfully logged in")
-
+     
             if user:
                 auth.login(user=user, request=request)
-                return redirect(reverse('index'))
+                messages.success(request, "You have successfully logged in")
             else:
-                user_form.add_error(None, "Your username or password are incorrect")
+                login_form.add_error(None, "Your username or password are incorrect")
 
     else:
         login_form = UserLoginForm()
@@ -59,8 +58,6 @@ def register(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('index'))
-
             else:
                 messages.error(request, "Unable to register your account at this time!")
     else:
