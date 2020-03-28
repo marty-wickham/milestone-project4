@@ -70,3 +70,18 @@ footer {
   margin-right: 20px;
   margin-bottom: 16px;
 }
+
+.box {
+    height: 250px;
+    width: 1000px;
+    background-color: black;
+    display: inline-block;
+}
+
+.fa-star {
+    color: gold;
+}
+
+.fa-star:hover {
+    background-color: gold;
+}
