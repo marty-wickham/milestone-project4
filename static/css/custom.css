@@ -29,7 +29,7 @@ footer {
 }
 
 .container-fluid {
-    background-color: #63797f;  
+    background-color: #d3d8da;  
     height: 90vh;
 }
 
@@ -46,19 +46,27 @@ footer {
 }
 
 
-/*------------------------- Index page -------------------------*/
+/*------------------------- Games page -------------------------*/
 
 .game {
-    background-size: contain;
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 150px;
     height: 150px;
-    margin: 0 auto;
 }
 
 .games-row {
-    margin-top: 30px;
+    padding-top: 2rem;
+}
+
+
+.panel-footer {
+    text-align: center;     
+}
+
+.panel {
+    border: 1px solid gray;
+    padding: 0;
 }
 
 
@@ -78,10 +86,7 @@ footer {
     display: inline-block;
 }
 
-.fa-star {
-    color: gold;
-}
 
 .fa-star:hover {
-    background-color: gold;
+    color: gold;
 }
