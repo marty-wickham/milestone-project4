@@ -25,6 +25,8 @@ body {
 
 .nav-link:hover {
     color: white;
+    transform: scale(1.1);
+    transition: 200ms;
 }
 
 
@@ -65,7 +67,7 @@ footer {
 /*------------------------- Games page -------------------------*/
 
 .container-fluid {
-    background-color: #d3d8da;  
+    background-image: url("https://i.pinimg.com/originals/92/46/ec/9246ecfe50ca77f129b9515583017348.jpg")
 }
 
 .image {
