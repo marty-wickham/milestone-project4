@@ -28,11 +28,6 @@ footer {
     padding: 0;
 }
 
-.container-fluid {
-    background-color: #d3d8da;  
-    height: 90vh;
-}
-
 .test {
     width: 70%;
     height: 90%;
@@ -48,25 +43,63 @@ footer {
 
 /*------------------------- Games page -------------------------*/
 
-.game {
+.container-fluid {
+    background-color: #d3d8da;  
+}
+
+.image {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 150px;
+    height: 0px;
+    width: 100%;
+    padding-top: 55%;
 }
 
 .games-row {
     padding-top: 2rem;
 }
 
-
-.panel-footer {
-    text-align: center;     
+.panel {
+    height: 100%;
+    border: 1px solid #ddd;
+    padding: 0;
 }
 
-.panel {
-    border: 1px solid gray;
-    padding: 0;
+ /* The min and max height here deal with the                                 .panel-price fitting inside the panel body at                             differnent screen widths; */
+.panel-body { 
+    background-color: #e9ece0;
+    padding: .5rem;
+    max-height: 150px; 
+    min-height: 100px;
+}
+
+.panel-title {
+    font-size: 1rem;
+    font-weight: 500;
+    min-height: 38px;
+}
+
+.panel-price {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 1.2rem;
+    float: right;
+}
+
+.panel-input {
+    display: none;
+}
+
+.cart-btn {
+    color: #1e7e34;
+    border-color: #1e7e34;
+}
+
+.cart-btn:hover {
+    color:#ddd;
+    background-color: #1e7e34;
 }
 
 
