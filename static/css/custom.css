@@ -2,13 +2,7 @@ body {
     font-family: Arial;
 }
 
-footer {
-    margin-top: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-top: 1px solid #ededed;
-    color: #A9A9A9;
-}
+
 
 .icon-bar {
     background-color: #fff;
@@ -17,6 +11,33 @@ footer {
 .accountform {
     padding-top: 20px;
 }
+
+
+/*------------------------- Navbar -------------------------*/
+
+.bg-black {
+    background-color: #131415;
+}
+
+.nav-link {
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+
+/*------------------------- Footer -------------------------*/
+
+footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 1px solid #ededed;
+    color: #A9A9A9;
+}
+
 
 /*------------------------- Index page -------------------------*/
 
@@ -64,7 +85,12 @@ footer {
     height: 100%;
     border: 1px solid #ddd;
     padding: 0;
+    box-shadow: 1px 1px #a9a4a4;
 }
+
+ .panel:hover .cart-btn {
+     display: inline;
+ }
 
  /* The min and max height here deal with the                                 .panel-price fitting inside the panel body at                             differnent screen widths; */
 .panel-body { 
@@ -93,13 +119,32 @@ footer {
 }
 
 .cart-btn {
-    color: #1e7e34;
-    border-color: #1e7e34;
+    color: #a0d61e;
+    border-color: #a0d61e;
+    display: none;
 }
 
 .cart-btn:hover {
     color:#ddd;
-    background-color: #1e7e34;
+    background-color: #a0d61e;
+    transform: scale(1.1);
+    transition: 200ms;
+}
+
+.sale-tag {
+    background-color: #772477;
+    color: white;
+    border-radius: 8%;
+    padding: 5px;
+    font-size: 1.1rem;
+    margin-right: .5rem;
+}
+
+.price {
+    font-size: .9rem;
+    color: #625f5f;
+    font-weight: 500;
+    margin-right: .5rem;
 }
 
 

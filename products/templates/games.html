@@ -11,15 +11,15 @@
 
 					<div class="panel-body">
 						<h3 class="panel-title">{{ game.name }}</h3>
-                        <p class="panel-price">
+                        <div class="panel-price">
                         {% if game.sale == True %}
-                            <div class="sale-tag">
-                                {% game.discount %}
-                            </div>
-                            <div class="sale-price">
-                                <p><strike>${{ game.price }}</strike></p>
-                                <p>${{ game.sale_price }}</p>
-                            </div>
+                            <span class="sale-tag">
+                                -{{ game.discount }}%
+                            </span>
+                            <span class="price">
+                                <strike>${{ game.price }}</strike>
+                                ${{ game.sale_price }}
+                            </span>
                         {% else %}
                             ${{ game.price }}
                         {% endif %}
@@ -28,7 +28,7 @@
                                 <i class="fas fa-cart-plus"></i>
                             </button>
                         </span>
-                        </p>
+                        </div>
                         <form id="cart-form" method="post" action="">
                                 {% csrf_token %}
                                 <input name="quantity" type="number" value="1" class="form-control panel-input">
