@@ -12,6 +12,9 @@ body {
     padding-top: 20px;
 }
 
+.container-fluid {
+    background-image: url("https://i.pinimg.com/originals/92/46/ec/9246ecfe50ca77f129b9515583017348.jpg")
+}
 
 /*------------------------- Navbar -------------------------*/
 
@@ -66,10 +69,6 @@ footer {
 
 /*------------------------- Games page -------------------------*/
 
-.container-fluid {
-    background-image: url("https://i.pinimg.com/originals/92/46/ec/9246ecfe50ca77f129b9515583017348.jpg")
-}
-
 .image {
     background-size: cover;
     background-position: center center;
@@ -116,8 +115,12 @@ footer {
     float: right;
 }
 
-.panel-input {
+/* .panel-input {
     display: none;
+} */
+
+.cart-form {
+    display: inline-block;
 }
 
 .cart-btn {
@@ -150,6 +153,16 @@ footer {
 }
 
 
+/*------------------------- Cart page -------------------------*/
+
+.cart-bg {
+    background-color: grey;
+}
+
+.row-panel {
+    background-color: #e4e2e2;
+    border: 1px solid black;
+}
 /*------------------------- Profile page -------------------------*/
 
 .account-img {

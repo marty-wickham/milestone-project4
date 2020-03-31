@@ -5,34 +5,30 @@
 		<div class="row games-row">
 			{% for game in games %}
 			<div class="col-8 col-sm-6 col-md-4 col-lg-3 mb-3 mx-auto">
+
 				<div class="panel">
 
 					<div class="image" style="background-image: url('{{ MEDIA_URL }}{{ game.image}}')"></div>
-
 					<div class="panel-body">
+
 						<h3 class="panel-title">{{ game.name }}</h3>
-                        <div class="panel-price">
-                        {% if game.sale == True %}
-                            <span class="sale-tag">
-                                -{{ game.discount }}%
-                            </span>
-                            <span class="price">
-                                <strike>${{ game.price }}</strike>
-                                ${{ game.sale_price }}
-                            </span>
-                        {% else %}
-                            ${{ game.price }}
-                        {% endif %}
-                        <span>
-                            <button class="btn cart-btn" type="submit" data-target="#cart-form">
+                        <form class="cart-form" method="post" action="{% url 'add_to_cart' game.id %}">
+                            {% csrf_token %}
+                            <input name="quantity" type="number" value="1" class="form-control panel-input">
+                            <button class="btn cart-btn" type="submit">
                                 <i class="fas fa-cart-plus"></i>
                             </button>
-                        </span>
-                        </div>
-                        <form id="cart-form" method="post" action="">
-                                {% csrf_token %}
-                                <input name="quantity" type="number" value="1" class="form-control panel-input">
                         </form>
+						<div class="panel-price">
+							{% if game.sale == True %}
+							    <span class="price">
+                                    <strike>${{ game.price }}</strike>
+                                    ${{ item.game.sale_price }}
+                                </span>
+							{% else %}
+							    ${{ item.game.price }}
+							{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>
