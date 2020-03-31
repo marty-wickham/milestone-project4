@@ -19,16 +19,18 @@
                                 <i class="fas fa-cart-plus"></i>
                             </button>
                         </form>
-						<div class="panel-price">
-							{% if game.sale == True %}
-							    <span class="price">
-                                    <strike>${{ game.price }}</strike>
-                                    ${{ item.game.sale_price }}
-                                </span>
-							{% else %}
-							    ${{ item.game.price }}
-							{% endif %}
-						</div>
+            
+                        {% if game.sale == True %}
+                            <div class="price">
+                                <p><strike>${{ game.price }}</strike></p>
+                                <p>${{ game.sale_price }}</p>
+                            </div>
+                            <span class="sale-tag">
+                                -{{ game.discount }}%
+                            </span>
+                        {% else %}
+                            ${{ game.price }}
+                        {% endif %}
 					</div>
 				</div>
 			</div>

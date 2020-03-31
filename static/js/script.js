@@ -1,7 +1,7 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    $(".panel").mouseenter(function() {
-        $(".cart-btn").removeClass("cart-btn");
-    })
-});
+//     $(".panel").mouseenter(function() {
+//         $(".cart-btn").removeClass("cart-btn");
+//     })
+// });
 
