@@ -90,7 +90,7 @@ footer {
 }
 
  .panel:hover .cart-btn {
-     display: inline;
+     display: inline-block;
  }
 
  /* The min and max height here deal with the                                 .panel-price fitting inside the panel body at                             differnent screen widths; */
@@ -115,9 +115,9 @@ footer {
     float: right;
 }
 
-/* .panel-input {
+.panel-input {
     display: none;
-} */
+}
 
 .cart-form {
     display: inline-block;
@@ -163,6 +163,8 @@ footer {
     background-color: #e4e2e2;
     border: 1px solid black;
 }
+
+
 /*------------------------- Profile page -------------------------*/
 
 .account-img {

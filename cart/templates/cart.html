@@ -34,15 +34,15 @@
                         </div>
                         <div class="col-4">
                             <div class="panel-price">
-                            {% if game.sale == True %}
-                            <span class="price">
-                                    <strike>${{ item.game.price }}</strike>
-                                    ${{ item.game.sale_price }}
-                                </span>
-                            {% else %}
-                                ${{ item.game.price }}
-                            {% endif %}
-                        </div>
+                                {% if item.game.sale == True %}
+                                    <span class="price">
+                                        <strike>${{ item.game.price }}</strike>
+                                        ${{ item.game.sale_price }}
+                                    </span>
+                                {% else %}
+                                    ${{ item.game.price }}
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
