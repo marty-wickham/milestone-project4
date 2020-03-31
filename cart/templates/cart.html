@@ -2,61 +2,63 @@
 
 {% block content %}
 <div class="container-fluid cart-bg">
-	<div class="container">
-        {% for item in cart_items %}
-            <div class="row row-panel">
-                <div class="col-3">
-                    <div class="image" style="background-image: url('{{ MEDIA_URL }}{{ item.game.image}}')"></div>
+    <div class="row pt-3">
+        <div class="col-md-8 offset-md-2">
+            {% for item in cart_items %}
+            <div class="row cart-panel">
+                <div class="col-3 cart-image-col">
+                    <div class="image" style="background-image: url('{{ MEDIA_URL }}{{ item.game.image }}')"></div>
                 </div>
                 <div class="col-9">
-                    <div class="row">
+                    <div class="row my-auto">
                         <div class="col-4">
-                            <h3 class="panel-title">{{ item.game.name }}</h3>
+                            <h3 class="panel-title y-center">{{ item.game.name }}</h3>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label for="quantity" class="sr-only">New Qty
+                                    <label for="quantity"                       class="sr-only">New Qty
                                     </label>
                                     <div class="input-group">
                                         <div class="input-group-addon">Qty</div>
-                                        <input name="quantity" type="number" min="0" max="3" class="form-control" value="{{ item.quantity }}">
+                                        <input name="quantity" type="number" min="0" max="3" class="cart-input" value="{{ item.quantity }}">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true">
-                                    </span>Amend
+                                <button type="submit" class="btn cart-btn">
+                                    <i class="far fa-check-circle"></i>
                                 </button>
                             </form>
                         </div>
-                        <div class="col-4">
+                        <div class="col-2">
                             <div class="panel-price">
                                 {% if item.game.sale == True %}
-                                    <span class="price">
-                                        <strike>${{ item.game.price }}</strike>
-                                        ${{ item.game.sale_price }}
-                                    </span>
+                                <span class="price">
+                                    <strike>${{ item.game.price }}</strike>
+                                    ${{ item.game.sale_price }}
+                                </span>
                                 {% else %}
-                                    ${{ item.game.price }}
+                                ${{ item.game.price }}
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        {% endfor %}
-        <div class="row">
-            <p>Total</p>
-            <p>
-                <span class="glyphicon glyphicon-euro" aria-hidden="true">
-                </span>{{ total }}
-            </p>
-            <a href="#" class="btn btn-success" role="button">
-                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true">
-                </span>Checkout
-            </a>
+            {% endfor %}
+            <div class="row cart-panel">
+                <h3>Order Total</h3>
+                <p>
+                    <span class="glyphicon glyphicon-euro" aria-hidden="true">
+                        {{ total }}
+                    </span>
+                </p>
+                <a href="#" class="btn btn-success" role="button">
+                    <span class="glyphicon glyphicon-ok-sign" aria-hidden="true">
+            </span>Checkout
+                </a>
+            </div>
         </div>
-	</div>
+    </div>
 </div>
 {% endblock %}

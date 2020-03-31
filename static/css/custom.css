@@ -20,6 +20,12 @@ p {
     margin-bottom: 0;
 }
 
+.y-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 /*------------------------- Navbar -------------------------*/
 
 .bg-black {
@@ -80,10 +86,6 @@ footer {
     height: 0px;
     width: 100%;
     padding-top: 55%;
-}
-
-.games-row {
-    padding-top: 2rem;
 }
 
 .panel {
@@ -165,9 +167,17 @@ footer {
     background-color: grey;
 }
 
-.row-panel {
+.cart-panel {
     background-color: #e4e2e2;
     border: 1px solid black;
+}
+
+.cart-image-col {
+    padding: 0;
+}
+
+.cart-input {
+    width: 2rem;
 }
 
 
