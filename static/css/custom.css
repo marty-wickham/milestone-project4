@@ -26,6 +26,10 @@ p {
     transform: translateY(-50%);
 }
 
+/* .float-r {
+    float: right;
+} */
+
 /*------------------------- Navbar -------------------------*/
 
 .bg-black {
@@ -76,6 +80,24 @@ footer {
     transition: 0.35s ease-in-out;
 }
 
+.index-container {
+    padding: 0;
+}
+
+/* Found out a way to maintain aspect ratio, using padding-top to determine the dimension of height by forcing height=0" */
+.carousel-item {
+    position: relative; 
+    height: 0;
+    padding-top: 42%
+}
+
+.carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
 /*------------------------- Games page -------------------------*/
 
@@ -169,7 +191,8 @@ footer {
 
 .cart-panel {
     background-color: #e4e2e2;
-    border: 1px solid black;
+    border: 1px solid #495057;
+    margin-bottom: .5rem;
 }
 
 .cart-image-col {
@@ -180,6 +203,13 @@ footer {
     width: 2rem;
 }
 
+.cart-content {
+    height: 100%;
+}
+
+.checkout-btn {
+    height: 3rem;
+}
 
 /*------------------------- Profile page -------------------------*/
 
