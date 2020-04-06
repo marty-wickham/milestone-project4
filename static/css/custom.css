@@ -2,8 +2,6 @@ body {
     font-family: Arial;
 }
 
-
-
 .icon-bar {
     background-color: #fff;
 }
@@ -26,9 +24,9 @@ p {
     transform: translateY(-50%);
 }
 
-/* .float-r {
+.float-r {
     float: right;
-} */
+} 
 
 /*------------------------- Navbar -------------------------*/
 
@@ -129,8 +127,9 @@ footer {
     min-height: 100px;
 }
 
+
 .panel-title {
-    font-size: 1rem;
+    font-size: 2vh;         /* Responsive font-size */
     font-weight: 500;
     min-height: 38px;
 }
@@ -200,17 +199,34 @@ footer {
 }
 
 .cart-input {
-    width: 2rem;
+    width: 25%;
+    height: 25px;
 }
 
 .cart-content {
     height: 100%;
 }
 
-.checkout-btn {
+/* .checkout-btn {
     height: 3rem;
+} */
+
+.cart-total {
+    padding: 10px;
 }
 
+.quantity-btn {
+    border-radius: 50%;
+    border: none;
+    height: 25px;
+    width: 25px;
+    padding: 0px;
+    padding-top: 3px;
+}
+
+.fa-check-circle {
+    font-size: 20px;
+}
 /*------------------------- Profile page -------------------------*/
 
 .account-img {
