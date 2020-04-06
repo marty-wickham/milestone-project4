@@ -199,8 +199,8 @@ footer {
 }
 
 .cart-input {
-    width: 25%;
-    height: 25px;
+    width: 33%;
+    height: 24px;
 }
 
 .cart-content {
@@ -215,18 +215,19 @@ footer {
     padding: 10px;
 }
 
-.quantity-btn {
-    border-radius: 50%;
-    border: none;
-    height: 25px;
-    width: 25px;
-    padding: 0px;
-    padding-top: 3px;
+.icon-btn {
+    height: 0;
+    width: 0;
+    padding: 0;
+    border: 0;
 }
 
 .fa-check-circle {
-    font-size: 20px;
+    font-size: 24px;
+    border-radius: 50%;
 }
+
+
 /*------------------------- Profile page -------------------------*/
 
 .account-img {

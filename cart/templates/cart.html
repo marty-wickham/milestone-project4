@@ -12,26 +12,27 @@
 				<div class="col-9">
 					<div class="row cart-content">
 
-						<div class="title-box">
+						<div class="col-5">
 							<h3 class="panel-title y-center">{{ item.game.name }}</h3>
 						</div>
 
-						<div class="quantity-box-5">
+						<div class="col-4">
 							<form class="form-inline y-center float-r" method="post"
 								action="{% url 'adjust_cart' item.id %}">
 								{% csrf_token %}
 								<div class="form-group">
-									<label for="quantity"                   class="sr-only">New Qty</label>
-									<span class="input-group-addon">Qty</span>
+									<label class="form-group-addon" for="quantity">Qty</label>
 									<input name="quantity" type="number" min="0" max="3" class="cart-input" value="{{ item.quantity }}">
-									<button type="submit" class="btn cart-btn quantity-btn">
-                                        <i class="far fa-check-circle"></i>
-                                    </button>
+                                    <span>
+                                        <button type="submit" class="icon-btn">
+                                            <i class="far fa-check-circle cart-btn"></i>
+                                        </button>
+                                    </span>	
                                 </div>
 							</form>
 						</div>
 
-						<div class="price-box">
+						<div class="col-3">
 							<div class="panel-price y-center">
 								{% if item.game.sale == True %}
 								<span class="price">
