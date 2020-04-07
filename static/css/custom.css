@@ -213,6 +213,7 @@ footer {
 
 .cart-total {
     padding: 10px;
+    float: right;
 }
 
 .icon-btn {
@@ -225,6 +226,18 @@ footer {
 .fa-check-circle {
     font-size: 24px;
     border-radius: 50%;
+}
+
+
+/*------------------------- Checkout page -------------------------*/
+
+.checkout {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
 }
 
 

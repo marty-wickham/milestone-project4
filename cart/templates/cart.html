@@ -13,27 +13,11 @@
 					<div class="row cart-content">
 
 						<div class="col-5">
-							<h3 class="panel-title y-center">{{ item.game.name }}</h3>
-						</div>
-
-						<div class="col-4">
-							<form class="form-inline y-center float-r" method="post"
-								action="{% url 'adjust_cart' item.id %}">
-								{% csrf_token %}
-								<div class="form-group">
-									<label class="form-group-addon" for="quantity">Qty</label>
-									<input name="quantity" type="number" min="0" max="3" class="cart-input" value="{{ item.quantity }}">
-                                    <span>
-                                        <button type="submit" class="icon-btn">
-                                            <i class="far fa-check-circle cart-btn"></i>
-                                        </button>
-                                    </span>	
-                                </div>
-							</form>
+							<h3 class="panel-title">{{ item.game.name }}</h3>
 						</div>
 
 						<div class="col-3">
-							<div class="panel-price y-center">
+							<div class="panel-price">
 								{% if item.game.sale == True %}
 								<span class="price">
                                     <strike>${{ item.game.price }}</strike>
@@ -44,18 +28,38 @@
 								{% endif %}
 							</div>
 						</div>
+
+                        <div class="col-4">
+                            <form class="form-inline float-r" method="post"
+                                action="{% url 'adjust_cart' item.id %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="form-group-addon" for="quantity">Qty</label>
+                                    <input name="quantity" type="number" min="0" max="3" class="cart-input" value="{{ item.quantity }}">
+                                    <span>
+                                        <button type="submit" class="icon-btn">
+                                            <i class="far fa-check-circle cart-btn"></i>
+                                        </button>
+                                    </span>	
+                                </div>
+                            </form>
+						</div>
+
 					</div>
 				</div>
 			</div>
 			{% endfor %}
 			<div class="row cart-panel">
-				<div class="col-4 offset-sm-8 cart-total">
-					<span>Order Total:</span>
-					<span><i class="fas fa-euro-sign"></i>{{ total }}</span>
-					<span>
-                        <a href="#" class="btn cart-btn checkout-btn" role="button">Checkout</a>
-                    </span>
+                <div class="col-4"></div>
+				<div class="col-4">
+                    <div class="cart-total">
+                        <span>Order Total:</span>
+                        <span><i class="fas fa-euro-sign"></i>{{ total }}</span>
+                    </div>
 				</div>
+                <div class="col-4">
+                    <a href="{% url 'checkout' %}" class="btn cart-btn float-r" role="button">Checkout</a>
+                </div>
 			</div>
 		</div>
 	</div>
