@@ -28,6 +28,28 @@ p {
     float: right;
 } 
 
+.v-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.vh-center {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.padding {
+    padding: 5px;
+}
+
+.game-title {
+    font-size: 2vh;         /* Responsive font-size */
+    font-weight: 500;
+}
+
 /*------------------------- Navbar -------------------------*/
 
 .bg-black {
@@ -97,6 +119,7 @@ footer {
     height: 100%;
 }
 
+
 /*------------------------- Games page -------------------------*/
 
 .image {
@@ -128,9 +151,7 @@ footer {
 }
 
 
-.panel-title {
-    font-size: 2vh;         /* Responsive font-size */
-    font-weight: 500;
+.title-height {
     min-height: 38px;
 }
 
