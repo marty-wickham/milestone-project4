@@ -46,7 +46,7 @@ p {
 }
 
 .game-title {
-    font-size: 2vh;         /* Responsive font-size */
+    font-size: 1em;        
     font-weight: 500;
 }
 
@@ -202,6 +202,14 @@ footer {
     float: right;
 }
 
+a {
+    color: #131415;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 
 /*------------------------- Cart page -------------------------*/
 
@@ -227,10 +235,6 @@ footer {
 .cart-content {
     height: 100%;
 }
-
-/* .checkout-btn {
-    height: 3rem;
-} */
 
 .cart-total {
     padding: 10px;
@@ -259,6 +263,12 @@ footer {
     width: 150px;
     height: 150px;
     margin: 0 auto;
+}
+
+@media(min-width: 576px) {
+    .checkout {
+    margin: 0;
+    }
 }
 
 
