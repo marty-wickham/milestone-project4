@@ -11,11 +11,12 @@ body {
 }
 
 .container-fluid {
-    background-image: url("https://i.pinimg.com/originals/92/46/ec/9246ecfe50ca77f129b9515583017348.jpg")
+    /* background-image: url("https://i.pinimg.com/originals/92/46/ec/9246ecfe50ca77f129b9515583017348.jpg") */
+    background-color: #e1e0e0;
 }
 
 p {
-    margin-bottom: 0;
+    font-size: 1.2rem;
 }
 
 .y-center {
@@ -49,6 +50,22 @@ p {
     font-size: 1em;        
     font-weight: 500;
 }
+
+.icon-btn {
+    background: none;
+    padding: 0;
+    border: 0;
+}
+
+td {
+    padding-left: 1rem;
+    font-size: 1.2rem;
+}
+
+tr {
+    font-size: 1.2rem; 
+}
+
 
 /*------------------------- Navbar -------------------------*/
 
@@ -86,18 +103,6 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
     padding: 0;
-}
-
-.test {
-    width: 70%;
-    height: 90%;
-    margin: 0 -250px;
-    background-color: black;
-}
-
-.test:hover {
-    transform: translateX(350px);
-    transition: 0.35s ease-in-out;
 }
 
 .index-container {
@@ -241,13 +246,6 @@ a:hover {
     float: right;
 }
 
-.icon-btn {
-    height: 0;
-    width: 0;
-    padding: 0;
-    border: 0;
-}
-
 .fa-check-circle {
     font-size: 24px;
     border-radius: 50%;
@@ -289,6 +287,27 @@ a:hover {
 }
 
 
-.fa-star:hover {
+/*------------------------- Game details page -------------------------*/
+
+.bg-img {
+    background-image: url("{{ MEDIA_URL }}{{ game.image }}");
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 0;
+    background-attachment: fixed;
+}
+
+.play-btn {
+    font-size: 7rem;
+    color: 	#FFFFFF;
+}
+
+.title-padding {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.highlight {
     color: gold;
 }
