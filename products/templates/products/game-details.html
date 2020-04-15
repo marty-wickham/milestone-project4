@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <!-- Full width background image -->
-<div class="container-fluid">
+<div class="container-fluid game-banner">
 	<div class="bg-img" style="background-image: url('{{ MEDIA_URL }}{{ game.image}}')">
 
 		<button type="button" class="icon-btn vh-center" data-toggle="modal" data-target="#video_modal">
@@ -61,7 +61,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="star-container">
-							<i id="star1" class="fas fa-star"></i>
+                            <i id="star1" class="fas fa-star"></i>
 							<i id="star2" class="fas fa-star"></i>
 							<i id="star3" class="fas fa-star"></i>
 							<i id="star4" class="fas fa-star"></i>
@@ -73,6 +73,11 @@
 					</div>
 				</div>
 				<hr>
+                <div class="review-box">
+                    <form action="">
+
+                    </form>
+                </div>
 				{% if reviews %}
 				{% for review in reviews %}
 				<div class="row">

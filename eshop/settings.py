@@ -44,12 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
+    'home.apps.HomeConfig',
+    'accounts.apps.AccountsConfig',
+    'products.apps.ProductsConfig',
+    'cart.apps.CartConfig',
+    'checkout.apps.CheckoutConfig',
     'django_forms_bootstrap',
-    'home',
-    'products',
-    'cart',
-    'checkout',
 ]
 
 MIDDLEWARE = [

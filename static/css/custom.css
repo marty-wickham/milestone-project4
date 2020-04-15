@@ -15,10 +15,6 @@ body {
     background-color: #e1e0e0;
 }
 
-p {
-    font-size: 1.2rem;
-}
-
 .y-center {
     position: absolute;
     top: 50%;
@@ -59,12 +55,9 @@ p {
 
 td {
     padding-left: 1rem;
-    font-size: 1.2rem;
 }
 
-tr {
-    font-size: 1.2rem; 
-}
+
 
 
 /*------------------------- Navbar -------------------------*/
@@ -199,12 +192,16 @@ footer {
     float: right;
 }
 
-.price {
+.price-tag {
     font-size: .9rem;
     color: #625f5f;
     font-weight: 500;
     margin-right: .5rem;
     float: right;
+}
+
+.price {
+    margin-bottom: 0;
 }
 
 a {
@@ -279,15 +276,12 @@ a:hover {
   margin-bottom: 16px;
 }
 
-.box {
-    height: 250px;
-    width: 1000px;
-    background-color: black;
-    display: inline-block;
-}
-
 
 /*------------------------- Game details page -------------------------*/
+
+.game-banner {
+    padding: 0;
+}
 
 .bg-img {
     background-image: url("{{ MEDIA_URL }}{{ game.image }}");
@@ -310,4 +304,8 @@ a:hover {
 
 .highlight {
     color: gold;
+}
+
+.box {
+    display: inline-block;
 }

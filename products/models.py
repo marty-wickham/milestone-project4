@@ -33,7 +33,7 @@ class Game(models.Model):
         ('18', '18'),
     ]
 
-    DISCOUNT_CHOICES = [(i, i) for i in range(5, 96, 5)]
+    # DISCOUNT_CHOICES = [(i, i) for i in range(5, 96, 5)]
 
     name = models.CharField(max_length=120, default='')
     description = models.TextField()
@@ -46,8 +46,10 @@ class Game(models.Model):
     release_date = models.DateField()
     company = models.CharField(max_length=30)
     pegi_rating = models.CharField(max_length=2, choices=PEGI_RATING_CHOICES, blank=True)
-    sale = models.BooleanField(blank=True, default=False)
-    discount = models.IntegerField(blank=True, choices=DISCOUNT_CHOICES)
+    discount = models.DecimalField(max_digits=3, decimal_places=2)
+    sale_price = models.DecimalField(max_digits=3, decimal_places=2)
+    banner_image = models.ImageField(upload_to='images', blank=True)
+    video_url = models.URLField(max_length=200, blank=False)
 
     def __str__(self):
         return self.name
@@ -57,8 +59,9 @@ class Review(models.Model):
     """Model migration design for reviews"""
     STAR_CHOICES = [(i, i) for i in range(1, 6)]
 
-    game = models.ForeignKey(Game, null=False)
+    game = models.ForeignKey(Game, null=False, on_delete=models.CASCADE)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    prof_image = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=40, null=False)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
