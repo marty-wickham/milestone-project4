@@ -7,7 +7,7 @@ from .models import Game
 def all_games(request):
     """Create a view that will return a list of all of the games available to buy and render them to the "games.html" template"""
     games = Game.objects.all()
-    return render(request, 'prodcuts/games.html', {'games': games})
+    return render(request, 'products/games.html', {'games': games})
 
 
 def game_details(request, pk):

@@ -37,7 +37,7 @@ class Game(models.Model):
 
     name = models.CharField(max_length=120, default='')
     description = models.TextField()
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    price = models.DecimalField(max_digits=3, decimal_places=2)
     image = models.ImageField(upload_to='images')
     genre = models.CharField(max_length=17, choices=GENRE_CHOICES, blank=False)
     genre_two = models.CharField(max_length=17, choices=GENRE_CHOICES, blank=True)
@@ -47,7 +47,7 @@ class Game(models.Model):
     company = models.CharField(max_length=30)
     pegi_rating = models.CharField(max_length=2, choices=PEGI_RATING_CHOICES, blank=True)
     discount = models.DecimalField(max_digits=3, decimal_places=2)
-    sale_price = models.DecimalField(max_digits=3, decimal_places=2)
+    sale_price = models.DecimalField(max_digits=3, decimal_places=2, null=True)
     banner_image = models.ImageField(upload_to='images', blank=True)
     video_url = models.URLField(max_length=200, blank=False)
 
@@ -58,10 +58,10 @@ class Game(models.Model):
 class Review(models.Model):
     """Model migration design for reviews"""
     STAR_CHOICES = [(i, i) for i in range(1, 6)]
-
+    
     game = models.ForeignKey(Game, null=False, on_delete=models.CASCADE)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
-    prof_image = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    # prof_image = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=40, null=False)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
