@@ -19,7 +19,7 @@
                                 </button>
                             </form>
                 
-                            {% if game.sale == True %}
+                            {% if game.sale_price %}
                                 <div class="price-tag">
                                     <p class="price"><strike>${{ game.price }}</strike></p>
                                     <p class="price">${{ game.sale_price }}</p>

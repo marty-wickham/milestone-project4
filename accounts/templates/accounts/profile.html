@@ -1,14 +1,25 @@
 {% extends "base.html" %}
+{% load bootstrap_tags %}
 {% block content %}
 <div class="container">
-	<div class="content-section">
+	<div class="col-md-8 offset-md-2 mt-4 content">
 		<div class="media">
-			<img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+			<img class="rounded-circle account-img" src="{{ MEDIA_URL }}{{ user.profile.prof_image }}">
 			<div class="media-body">
 				<h2 class="account-heading">{{ user.username }}</h2>
 				<p class="text-secondary">{{ user.email }}</p>
 			</div>
 		</div>
+        <form method="POST" enctype="multipart/form-data">
+            <fieldset class="form-group">
+                <legend>Profile Info</legend>
+                    {% csrf_token %}
+                    {{ u_form | as_bootstrap }}
+                    {{ p_form | as_bootstrap }}
+
+                    <button type="submit" class="btn btn-outline-info">Update</button>
+            </fieldset>
+        </form>
 	</div>
 </div>
 {% endblock %}

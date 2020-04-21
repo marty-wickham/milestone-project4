@@ -6,10 +6,6 @@ body {
     background-color: #fff;
 }
 
-.accountform {
-    padding-top: 20px;
-}
-
 .container-fluid {
     /* background-image: url("https://i.pinimg.com/originals/92/46/ec/9246ecfe50ca77f129b9515583017348.jpg") */
     background-color: #e1e0e0;
@@ -274,6 +270,13 @@ a:hover {
   width: 125px;
   margin-right: 20px;
   margin-bottom: 16px;
+}
+
+.content {
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    padding: 10px 20px;
+    border-radius: 3px;
 }
 
 

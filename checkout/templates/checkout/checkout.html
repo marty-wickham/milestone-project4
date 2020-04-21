@@ -26,14 +26,14 @@
 		</div>
 
 		<div class="col-3 col-sm-2">
-			<div class="panel-price v-center">
-				{% if item.game.sale == True %}
+			<div class="v-center float-r">
+				{% if game.sale_price %}
 				<span class="price">
                     <strike>${{ item.game.price }}</strike>
                     ${{ item.game.sale_price }}
                 </span>
 				{% else %}
-				${{ item.game.price }}
+				    ${{ item.game.price }}
 				{% endif %}
 			</div>
 		</div>
