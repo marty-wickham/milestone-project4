@@ -189,15 +189,23 @@ footer {
 }
 
 .price-tag {
-    font-size: .9rem;
-    color: #625f5f;
-    font-weight: 500;
     margin-right: .5rem;
     float: right;
 }
 
+strike{
+    color: grey;
+    font-size: .7rem;
+    float: right;
+    margin-bottom: 0;
+}
+
 .price {
     margin-bottom: 0;
+    color: black;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 20px;
 }
 
 a {
@@ -311,4 +319,10 @@ a:hover {
 
 .box {
     display: inline-block;
+}
+
+.review-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
 }

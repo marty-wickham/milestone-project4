@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Game
+from .models import Game, Review
 
 # Create your views here.
 
@@ -16,5 +16,10 @@ def game_details(request, pk):
     the primary key and render it to the game-details.html page, or return a
     404 error if not found"""
     game = get_object_or_404(Game, pk=pk)
-    game.save()
-    return render(request, 'products/games-details.html', {'game': game})
+
+    reviews = Review.objects.filter(game=game)
+
+    return render(request, 'products/game-details.html', {
+        'game': game,
+        'reviews': reviews
+    })

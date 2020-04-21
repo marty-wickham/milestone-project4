@@ -58,10 +58,9 @@ class Game(models.Model):
 class Review(models.Model):
     """Model migration design for reviews"""
     STAR_CHOICES = [(i, i) for i in range(1, 6)]
-    
+
     game = models.ForeignKey(Game, null=False, on_delete=models.CASCADE)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
-    # prof_image = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=40, null=False)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)

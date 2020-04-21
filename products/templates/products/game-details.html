@@ -2,7 +2,7 @@
 {% block content %}
 <!-- Full width background image -->
 <div class="container-fluid game-banner">
-	<div class="bg-img" style="background-image: url('{{ MEDIA_URL }}{{ game.image}}')">
+	<div class="bg-img" style="background-image: url('{{ MEDIA_URL }}{{ game.banner_image}}')">
 
 		<button type="button" class="icon-btn vh-center" data-toggle="modal" data-target="#video_modal">
             <i class="far fa-play-circle play-btn" data-toggle="modal" data-target="#video_modal"></i>
@@ -79,22 +79,21 @@
                     </form>
                 </div>
 				{% if reviews %}
-				{% for review in reviews %}
-				<div class="row">
-					<div class="col-3">
-						{{ review.user.prof_image.url }}
-                        {{ review.user.username }}
-					</div>
-					<div class="col-9">
-						<div class="row">
-							{{ review.rating }}{{ review.title }}
-							{{ review.date }}
-						</div>
-						<p>{{ review.review }}</p>
-					</div>
-				</div>
-				<hr>
-				{% endfor %}
+				    {% for review in reviews %}
+                        <article class="media content-section">
+                            <img class="rounded-circle review-img" src="{{ MEDIA_URL }}{{ review.user.profile.prof_image }}">
+                            <p><a class="mr-2" href="#">{{ review.user }}</a></p>
+                            
+                            <div class="media-body">
+                                <span>{{ review.rating }}</span>
+                                <h4>{{ review.title }}</h4>
+                                <p><small class="text-muted">{{ review.date_posted|date:"F d, Y" }}</small></p>
+                                
+                                <p class="article-content">{{ review.content }}</p>
+                            </div>
+                        </article>
+				        <hr>
+				    {% endfor %}
 				{% else %}
 				<p>There are currently no reviews for this game.</p>
 				{% endif %}

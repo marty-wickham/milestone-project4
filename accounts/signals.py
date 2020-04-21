@@ -1,4 +1,6 @@
-# A signal that gets fired after an objecy has been saved
+"""A signal that gets fired after an object has been saved. Signals.py is used
+to automatically create a profile for each user. When a user creates an
+account, signals.py will automatically create a profile for that user."""
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.dispatch import receiver

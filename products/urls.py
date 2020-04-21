@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from .views import all_games, game_details
 
 urlpatterns = [
-    url(r'^$', all_games, name='all_games'),
-    url(r'^(?P<pk>\d+)/$', game_details, name='game_details'),
+    path('', all_games, name='all_games'),
+    path('<int:pk>/', game_details, name='game_details'),
 ]
