@@ -23,17 +23,29 @@ def game_details(request, pk):
     reviews = Review.objects.filter(game=game)
 
     if request.method == 'POST':
-        review_form = ReviewForm(request.POST, instance=request.game)
+        review_form = ReviewForm(request.POST)
 
         if review_form.is_valid():
-            review_form.save()
+            review = review_form.save(commit=False)
+            review.user = request.user
+            review.game = game
+            review.save()
             messages.success(request, f'Your review has been created!')
-            return redirect('game_details')
+            return redirect('game_details', game.pk)
     else:
         review_form = ReviewForm()
 
+        review_count = game.reviews.count()
+        sum = 0
+        avg_rating = 0
+        if review_count > 0:
+            for rating in game.reviews.values("rating"):
+                sum += rating["rating"]
+            avg_rating = sum / review_count
+
     return render(request, 'products/game-details.html', {
-        'game': game,
-        'reviews': reviews,
-        'review_form': review_form
-    })
+                                                            'game': game,
+                                                            'reviews': reviews,
+                                                            'review_form': review_form,
+                                                            'avg_rating': avg_rating
+                                                        })

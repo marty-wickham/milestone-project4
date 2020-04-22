@@ -30,8 +30,6 @@ $(document).ready(function() {
         $("#star2").addClass("highlight");
         $("#star3").addClass("highlight");
         $("#star5").removeClass("highlight");
-        
-
     });
 
     $("#star5").mouseenter(function() {
@@ -50,11 +48,17 @@ $(document).ready(function() {
         $("#star5").removeClass("highlight");
     })
 
+    display = false;
+
     $("#add-review").click(function() {
-        $("#review-form").removeClass("hide");
-        
-        if (display === true) {
+
+        if (display === false) {
+            $("#review-form").removeClass("hide");
+            display = true;
+        }
+        else  {
             $("#review-form").addClass("hide");
+            display = false;
         }
 
     });

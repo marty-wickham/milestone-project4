@@ -25,7 +25,8 @@ def register(request):
 
 @login_required
 def profile(request):
-    """A view that displays the profile page of a logged in user"""
+    """A view that displays the profile page of a logged in user and allows
+    them to edit change their profile picture, username and email"""
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,

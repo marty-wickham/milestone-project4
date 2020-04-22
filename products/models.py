@@ -59,12 +59,16 @@ class Review(models.Model):
     """Model migration design for reviews"""
     STAR_CHOICES = [(i, i) for i in range(1, 6)]
 
-    game = models.ForeignKey(Game, null=False, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=40, null=False)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     rating = models.IntegerField(choices=STAR_CHOICES, blank=False)
+    game = models.ForeignKey(Game, related_name="reviews",
+                                on_delete=models.CASCADE,
+                                related_query_name="review", null=True)
+    user = models.ForeignKey(User, related_name="reviews",
+                             on_delete=models.CASCADE,
+                             related_query_name="review", null=True)
 
     def __str__(self):
         return self.title
