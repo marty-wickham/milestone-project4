@@ -326,3 +326,22 @@ a:hover {
   width: 65px;
   margin-right: 16px;
 }
+
+.review-head {
+    display: inline-block;
+    text-align: center;
+    padding-right: 1rem;
+}
+
+.review-user {
+    font-weight: 600;
+}
+
+.review-body {
+    display: inline-block;
+}
+
+.review-title {
+    margin-bottom: 0;
+    font-weight: 600;
+}

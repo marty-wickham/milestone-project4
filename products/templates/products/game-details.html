@@ -10,6 +10,7 @@
 	</div>
 </div>
 
+<!-- Game Info -->
 <div class="container-fluid">
 	<div class="container">
 		<div class="row">
@@ -53,53 +54,61 @@
 					</table>
 				</aside>
 			</div>
+        </div>
+    </div>
+</div>
 
-			<!-- User review section -->
-			<div class="col-12">
-				<h4>User Reviews</h4>
-				<hr>
-				<div class="row">
-					<div class="col-12">
-						<div class="star-container">
-                            <i id="star1" class="fas fa-star"></i>
-							<i id="star2" class="fas fa-star"></i>
-							<i id="star3" class="fas fa-star"></i>
-							<i id="star4" class="fas fa-star"></i>
-							<i id="star5" class="fas fa-star"></i>
-						</div>
-						<button class="btn btn-info">
-                            <i class="fas fa-plus"></i> Add review
-                        </button>
-					</div>
-				</div>
-				<hr>
+<!-- User review section -->
+<div class="container-fluid">
+	<div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4>User Reviews</h4>
+                <hr>
+            </div>
+            <div class="col-12">
+                <div class="star-container">
+                    <i id="star1" class="fas fa-star"></i>
+                    <i id="star2" class="fas fa-star"></i>
+                    <i id="star3" class="fas fa-star"></i>
+                    <i id="star4" class="fas fa-star"></i>
+                    <i id="star5" class="fas fa-star"></i>
+                </div>
+                <button class="btn btn-info">
+                    <i class="fas fa-plus"></i> Add review
+                </button>
+                <hr>
+            </div>  
+            <div class="col-12">
                 <div class="review-box">
                     <form action="">
 
                     </form>
                 </div>
-				{% if reviews %}
-				    {% for review in reviews %}
-                        <article class="media content-section">
-                            <img class="rounded-circle review-img" src="{{ MEDIA_URL }}{{ review.user.profile.prof_image }}">
-                            <p><a class="mr-2" href="#">{{ review.user }}</a></p>
-                            
-                            <div class="media-body">
-                                <span>{{ review.rating }}</span>
-                                <h4>{{ review.title }}</h4>
+            </div>
+            <div class="col-12">
+                {% if reviews %}
+                    {% for review in reviews %}
+                        <article class="content-section">
+                            <div class="review-head">
+                                <img class="rounded-circle review-img" src="{{ MEDIA_URL }}{{ review.user.profile.prof_image }}">
+                                <p class="review-user">{{ review.user }}</p>
+                            </div>
+                            <div class="review-body">
+                                <h4 class="review-title">{{ review.title }}</h4>
                                 <p><small class="text-muted">{{ review.date_posted|date:"F d, Y" }}</small></p>
                                 
                                 <p class="article-content">{{ review.content }}</p>
                             </div>
                         </article>
-				        <hr>
-				    {% endfor %}
-				{% else %}
-				<p>There are currently no reviews for this game.</p>
-				{% endif %}
-			</div>
-		</div>
-	</div>
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                <p>There are currently no reviews for this game.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Video modal -->
