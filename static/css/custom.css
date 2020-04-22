@@ -53,7 +53,9 @@ td {
     padding-left: 1rem;
 }
 
-
+.hide {
+    display: none;
+}
 
 
 /*------------------------- Navbar -------------------------*/
@@ -314,17 +316,21 @@ a:hover {
 }
 
 .highlight {
-    color: gold;
+    color: #ed9d14;
 }
 
 .box {
     display: inline-block;
+    margin-left: -5px;
+}
+
+#star-container {
+    margin-left: 5px /* Offset .box above */
 }
 
 .review-img {
   height: 65px;
   width: 65px;
-  margin-right: 16px;
 }
 
 .review-head {
@@ -345,3 +351,4 @@ a:hover {
     margin-bottom: 0;
     font-weight: 600;
 }
+
