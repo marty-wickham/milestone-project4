@@ -55,76 +55,76 @@
 					</table>
 				</aside>
 			</div>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 
 <!-- User review section -->
 <div class="container-fluid">
 	<div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h4>User Reviews</h4>
-                <hr>
-            </div>
-            <div class="col-12">
-                <h4>Average rating: {{ avg_rating }}</h4>
-                <div id="star-container">
-                    <div id="star1" class="box">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div id="star2" class="box">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div id="star3" class="box">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div id="star4" class="box">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div id="star5" class="box">
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <button id="add-review" class="btn btn-info">
+		<div class="row">
+			<div class="col-12">
+				<h4>User Reviews</h4>
+				<hr>
+			</div>
+			<div class="col-12">
+				<h4>Average rating: {{ avg_rating }}</h4>
+				<button id="add-review" class="btn btn-info">
                     <i class="fas fa-plus"></i> Add review
                 </button>
-                <hr>
-            </div>  
-            <div id="review-form" class="col-12 hide">
-                <div class="col-md-6">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ review_form | as_bootstrap }}
-                        <button type="submit" class="btn btn-outline-info">Save</button>
-                    </form>
-                </div>
-                <hr>
-            </div>
-            <div class="col-12">
-                {% if reviews %}
-                    {% for review in reviews %}
-                        <article class="content-section">
-                            <div class="review-head">
-                                <img class="rounded-circle review-img" src="{{ MEDIA_URL }}{{ review.user.profile.prof_image }}">
-                                <p class="review-user">{{ review.user }}</p>
-                            </div>
-                            <div class="review-body">
+				<hr>
+			</div>
+			<div id="review-form" class="col-12 hide">
+				<div class="col-md-6">
+					<form method="POST">
+						{% csrf_token %}
+						<div id="star-container">
+							<div id="1" class="box">
+								<i class="fas fa-star"></i>
+							</div>
+							<div id="2" class="box">
+								<i class="fas fa-star"></i>
+							</div>
+							<div id="3" class="box">
+								<i class="fas fa-star"></i>
+							</div>
+							<div id="4" class="box">
+								<i class="fas fa-star"></i>
+							</div>
+							<div id="5" class="box">
+								<i class="fas fa-star"></i>
+							</div>
+						</div>
+						{{ review_form | as_bootstrap }}
+						<button type="submit" class="btn btn-outline-info">Save</button>
+					</form>
+				</div>
+				<hr>
+			</div>
+			<div class="col-12">
+				{% if reviews %}
+				{% for review in reviews %}
+				<article class="content-section">
+					<div class="review-head">
+						<img class="rounded-circle review-img" src="{{ MEDIA_URL }}{{ review.user.profile.prof_image }}">
+						<p class="review-user">{{ review.user }}</p>
+					</div>
+					<div class="review-body">
 
-                                <h4 class="review-title">{{ review.title }}</h4>
-                                <p><small class="text-muted">{{ review.date_posted|date:"F d, Y" }}</small></p>
-                                
-                                <p class="article-content">{{ review.content }}</p>
-                            </div>
-                        </article>
-                        <hr>
-                    {% endfor %}
-                {% else %}
-                <p>There are currently no reviews for this game.</p>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+						<h4 class="review-title">{{ review.title }}</h4>
+						<p><small class="text-muted">{{ review.date_posted|date:"F d, Y" }}</small></p>
+
+						<p class="article-content">{{ review.content }}</p>
+					</div>
+				</article>
+				<hr>
+				{% endfor %}
+				{% else %}
+				<p>There are currently no reviews for this game.</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Video modal -->

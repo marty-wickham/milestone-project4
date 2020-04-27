@@ -325,7 +325,8 @@ a:hover {
 }
 
 #star-container {
-    margin-left: 5px /* Offset .box above */
+    margin-left: 5px; /* Offset .box above */
+    margin-bottom: 1rem;
 }
 
 .review-img {
