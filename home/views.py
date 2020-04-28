@@ -1,17 +1,17 @@
 from django.shortcuts import render
 from .models import Post
-# Create your views here.
+from products.models import Game
 
 
 def index(request):
     """A view that displays the index page"""
-    return render(request, 'home/index.html')
+    games = Game.objects.filter(discount=True)
+
+    return render(request, 'home/index.html', {'games': games})
 
 
 def about(request):
     """A view that displays the about page"""
-    posts 
-    context = {
-        'posts': posts
-    }
-    return render(request, 'home/about.html', context)
+    posts = Post.objects.all()
+
+    return render(request, 'home/about.html', {'posts': posts})

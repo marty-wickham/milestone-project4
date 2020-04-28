@@ -356,7 +356,7 @@ a:hover {
 .flag {
     position: relative;
     top: -50px;
-    background-color: #fff;
+    background-color: #edebe3;
     padding: 1rem;
 }
 
@@ -379,10 +379,15 @@ a:hover {
 }
 
 .full-price {
-
+    color: grey;
+    font-size: .8rem;
+    float: right;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    line-height: 1px;
 }
 
 .sale-price {
-
+    font-size: 1.5rem;
 }
 
