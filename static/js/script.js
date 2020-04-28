@@ -1,5 +1,24 @@
 $(document).ready(function() {
-    var hover = true
+    var hover = true;
+
+    $(".box").click(function() {
+        if(hover === true) {
+            hover = false;
+            console.log("hover is " + hover)
+            // var rating = $(this).atrr("id");
+
+             // $("#id_rating").val(rating);
+             return hover
+        } else {
+            hover = true;
+            console.log("hover is " + hover)    
+            return hover
+        }
+
+        
+    });
+    console.log("hover is " + hover)
+
 
     if (hover === true) {
         $("#1").mouseenter(function() {
@@ -28,17 +47,9 @@ $(document).ready(function() {
 
         $("#star-container").mouseleave(function() {
             $(".box").removeClass("highlight");
-        })
+        });
     }
 
-    
-
-    $(".box").click(function() {
-        hover = false;
-        var rating = $(this).atrr("id");
-        
-        $("#id_rating").val(rating);
-    });
 
     display = false;
 

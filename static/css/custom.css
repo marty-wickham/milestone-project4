@@ -167,20 +167,20 @@ footer {
     display: inline-block;
 }
 
-.cart-btn {
+.cart-btn-alt {
     color: #a0d61e;
     border-color: #a0d61e;
     /* display: none; */
 }
 
-.cart-btn:hover {
+.cart-btn-alt:hover {
     color:#ddd;
     background-color: #a0d61e;
     transform: scale(1.1);
     transition: 200ms;
 }
 
-.sale-tag {
+.discount-tag-alt {
     background-color: #772477;
     color: white;
     border-radius: 8%;
@@ -190,7 +190,7 @@ footer {
     float: right;
 }
 
-.price-tag {
+.price-tag-alt {
     margin-right: .5rem;
     float: right;
 }
@@ -351,5 +351,38 @@ a:hover {
 .review-title {
     margin-bottom: 0;
     font-weight: 600;
+}
+
+.flag {
+    position: relative;
+    top: -50px;
+    background-color: #fff;
+    padding: 1rem;
+}
+
+.discount-tag {
+    background-color: #772477;
+    color: white;
+    border-radius: 8%;
+    padding: 5px;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.price-tag {
+    display: inline-block;
+}
+
+.cart-btn-l {
+    width: 100%;
+    height: 3rem;
+}
+
+.full-price {
+
+}
+
+.sale-price {
+
 }
 
