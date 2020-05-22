@@ -46,7 +46,7 @@ class Game(models.Model):
     release_date = models.DateField()
     company = models.CharField(max_length=30)
     pegi_rating = models.CharField(max_length=2, choices=PEGI_RATING_CHOICES, blank=True)
-    discount = models.PositiveSmallIntegerField(blank=True)
+    discount = models.PositiveSmallIntegerField(blank=True, null=True)
     sale_price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, default=0)
     banner_image = models.ImageField(upload_to='images', blank=True)
     video_url = models.URLField(max_length=200, blank=False)

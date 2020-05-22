@@ -125,22 +125,22 @@
 			</div>
 			<div class="col-12">
 				{% if reviews %}
-				{% for review in reviews %}
-				<article class="content-section">
-					<div class="review-head">
-						<img class="rounded-circle review-img" src="{{ MEDIA_URL }}{{ review.user.profile.prof_image }}">
-						<p class="review-user">{{ review.user }}</p>
-					</div>
-					<div class="review-body">
+                    {% for review in reviews %}
+                    <article class="content-section">
+                        <div class="review-head">
+                            <img class="rounded-circle review-img" src="{{ MEDIA_URL }}{{ review.user.profile.prof_image }}">
+                            <p class="review-user">{{ review.user }}</p>
+                        </div>
+                        <div class="review-body">
 
-						<h4 class="review-title">{{ review.title }}</h4>
-						<p><small class="text-muted">{{ review.date_posted|date:"F d, Y" }}</small></p>
+                            <h4 class="review-title">{{ review.title }}</h4>
+                            <p><small class="text-muted">{{ review.date_posted|date:"F d, Y" }}</small></p>
 
-						<p class="article-content">{{ review.content }}</p>
-					</div>
-				</article>
-				<hr>
-				{% endfor %}
+                            <p class="article-content">{{ review.content }}</p>
+                        </div>
+                    </article>
+                    <hr>
+                    {% endfor %}
 				{% else %}
 				<p>There are currently no reviews for this game.</p>
 				{% endif %}
@@ -154,9 +154,10 @@
 	aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
-			<iframe width="100%" height="506" src="{{ game.video_url }}" frameborder="0"
+			<iframe id="video" width="100%" height="506" src="https://www.youtube.com/embed/Cr3TCWPlDrw" frameborder="0"
 				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen></iframe>
+				allowfullscreen>
+            </iframe>
 		</div>
 	</div>
 </div>
