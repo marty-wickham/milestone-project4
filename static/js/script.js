@@ -22,34 +22,36 @@ $(document).ready(function () {
     });
 
 
-    // $(".box").on( "mouseenter", function() {
-    //     var onStar = parseInt($(this).data('rating'), 10); // The star currently hovering over
+    $(".box").mouseenter(function() {
+        var onStar = parseInt($(this).attr("id"), 10); // The star currently hovering over
 
-    //     $(this).parent().children(".box").each(function(e){
-    //         if (e < onStar) {
-    //             $(this).addClass("highlight");
-    //         }
-    //         else {
-    //             $(this).removeClass("highlight");
-    //         }
-    //     });
-    
-    // }).on("mouseout", function(){
-    //     $(this).parent().children(".box").each(function(e){
-    //         $(this).removeClass("highlight");
-    //     });
-    // });
+        $(".box").parent().children(".box").each(function(e) {
+            
+            if (e < onStar) {
+                $(this).addClass("highlight");
+            }
+            else {
+                $(this).removeClass("highlight");
+            }
+        }).mouseout(function(){
+            $(this).parent().children(".box").each(function(e){
+                $(this).removeClass("highlight");
+            });
+        });
+    });
 
-    $( ".box" ).mouseenter(function() {
-        var onStar = parseInt($(this).data('rating'), 10); // The star currently hovering over
+    $( ".box" ).click(function() {
+        var onStar = $(this).attr("id"); // The star currently selected
 
         $( ".box" ).each(function( index, element ) {
             // element == this
-            $( element ).addClass("highlight");
-            if ( $( this ).is( onStar ) ) {
-            
-                return false;
+            $( element ).addClass('selected');
+            if ( $( this ).attr("id") > onStar ) {
+                $( element ).removeClass('selected');
             }
         });
+
+        $("#id_rating").val([onStar]);
     });
+
 });

@@ -317,7 +317,11 @@ a:hover {
 }
 
 .highlight {
-    color: #ed9d14;
+    color: #d2b414;
+}
+
+.selected {
+    color: gold;
 }
 
 .box {

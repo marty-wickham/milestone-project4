@@ -20,7 +20,7 @@ def game_details(request, pk):
     this specific game, as well as a review form for users to add a their own
     review"""
     game = get_object_or_404(Game, pk=pk)
-    reviews = Review.objects.filter(game=game)
+    reviews = Review.objects.filter(game=game).order_by("-date_posted")
 
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
@@ -38,14 +38,16 @@ def game_details(request, pk):
         review_count = game.reviews.count()
         sum = 0
         avg_rating = 0
+        
         if review_count > 0:
+        
             for rating in game.reviews.values("rating"):
                 sum += rating["rating"]
-            avg_rating = sum / review_count
+            avg_rating = round(sum / review_count, 1)
 
     return render(request, 'products/game-details.html', {
-                                                            'game': game,
-                                                            'reviews': reviews,
-                                                            'review_form': review_form,
-                                                            'avg_rating': avg_rating
-                                                        })
+        'game': game,
+        'reviews': reviews,
+        'review_form': review_form,
+        'avg_rating': avg_rating,
+    })

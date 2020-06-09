@@ -57,18 +57,20 @@ class Game(models.Model):
 
 class Review(models.Model):
     """Model migration design for reviews"""
-    STAR_CHOICES = [(i, i) for i in range(1, 6)]
 
     title = models.CharField(max_length=40, null=False)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
-    rating = models.IntegerField(choices=STAR_CHOICES, blank=False)
+    rating = models.IntegerField(blank=False) 
     game = models.ForeignKey(Game, related_name="reviews",
                                 on_delete=models.CASCADE,
                                 related_query_name="review", null=True)
     user = models.ForeignKey(User, related_name="reviews",
                              on_delete=models.CASCADE,
                              related_query_name="review", null=True)
+    
+    class meta:
+        unique_together = ('game', 'user')
 
     def __str__(self):
         return self.title
