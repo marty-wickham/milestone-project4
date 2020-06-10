@@ -38,9 +38,9 @@ def game_details(request, pk):
         review_count = game.reviews.count()
         sum = 0
         avg_rating = 0
-        
+
         if review_count > 0:
-        
+
             for rating in game.reviews.values("rating"):
                 sum += rating["rating"]
             avg_rating = round(sum / review_count, 1)
