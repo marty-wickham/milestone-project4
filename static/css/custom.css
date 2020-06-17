@@ -41,7 +41,7 @@ body {
 }
 
 .game-title {
-    font-size: 1em;        
+    font-size: 1.2rem;        
     font-weight: 500;
 }
 
@@ -85,6 +85,23 @@ footer {
     padding-bottom: 40px;
     border-top: 1px solid #ededed;
     color: #A9A9A9;
+}
+
+
+/*------------------------- Price styles -------------------------*/
+
+.price {
+    color: #443f3f;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    line-height: 20px;
+}
+
+.price-l {
+    color: #443f3f;
+    font-size: 2.2rem;
+    font-weight: 500;
 }
 
 
@@ -139,7 +156,7 @@ footer {
 
 
 .title-height {
-    min-height: 38px;
+    min-height: 46px;
 }
 
 .panel-price {
@@ -193,22 +210,13 @@ strike{
     margin-bottom: 0;
 }
 
-.price {
-    margin-bottom: 0;
-    color: black;
-    font-weight: 500;
-    font-size: 1.2rem;
-    line-height: 20px;
-    margin-top: 1rem;
-}
-
-a {
+/* a {
     color: #131415;
 }
 
 a:hover {
     text-decoration: none;
-}
+} */
 
 
 /*------------------------- Cart page -------------------------*/
@@ -296,14 +304,16 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;   
 }
 
-.bg-img {
-    background-image: url("{{ MEDIA_URL }}{{ game.image }}");
-    background-repeat: no-repeat;
-    background-size: contain;
-    padding: 0;
-    background-attachment: fixed;
+@media(min-width: 768px) {
+    .bg-img {
+        background-size: contain;
+        background-attachment: fixed;
+    }
 }
 
 .play-btn {
@@ -313,7 +323,7 @@ a:hover {
 
 .title-padding {
     padding-top: 2rem;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
 }
 
 .highlight {
@@ -360,11 +370,29 @@ a:hover {
 }
 
 .flag {
-    position: relative;
-    top: -50px;
-    background-color: #edebe3;
-    padding: 1rem;
+    background-color: #d6d5d5;
+    padding: .6rem;
+
+    margin: 0 auto 2rem;
+    text-align: center;
+    border-radius: 1%;
 }
+
+@media(min-width: 480px) {
+    .flag {
+        width: 75%;
+    }
+}
+
+@media(min-width: 768px) {
+    .flag {
+        position: relative;
+        top: -70px;
+        margin-bottom: 0;
+        width: 100%;
+    }
+}
+
 
 .discount-tag {
     background-color: #772477;
@@ -381,7 +409,8 @@ a:hover {
 
 .cart-btn-l {
     width: 100%;
-    height: 3rem;
+    height: 4rem;
+    font-weight: 600;
 }
 
 .full-price {
@@ -399,6 +428,15 @@ a:hover {
 
 .game-rating {
     display: inline-block;
+    position: absolute;
+    margin: 0 1rem;
+}
+
+@media(min-width:400px) {
+    .game-rating {
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 .rating {
