@@ -60,8 +60,12 @@ td {
 
 /*------------------------- Navbar -------------------------*/
 
+.bg-opaque {
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
 .bg-black {
-    background-color: #131415;
+    background-color: black;
 }
 
 .nav-link {
