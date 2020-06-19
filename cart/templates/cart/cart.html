@@ -2,30 +2,37 @@
 
 {% block content %}
 <div class="container-fluid cart-bg">
-	<div class="row pt-3">
-		<div class="col-md-8 offset-md-2">
-			{% for item in cart_items %}
-			<div class="row cart-panel">
-				<div class="col-3 cart-image-col">
-					<div class="image" style="background-image: url('{{ MEDIA_URL }}{{ item.game.image }}')"></div>
-				</div>
-				<div class="col-9">
-					<div class="row cart-content">
-						<div class="col-5">
-							<h3 class="game-title v-center">{{ item.game.name }}</h3>
-						</div>
-						<div class="col-3">
-							<div class="panel-price v-center">
-								{% if item.game.sale == True %}
-								<span class="price">
+{% if product_count < 1 %}
+    <div class="container">
+        <div class="alert alert-success">
+            <h5>Your shopping cart is empty!</h5>
+        </div>
+    </div>
+{% else %}
+    <div class="row pt-3">
+        <div class="col-md-8 offset-md-2">
+            {% for item in cart_items %}
+            <div class="row cart-panel">
+                <div class="col-3 cart-image-col">
+                    <div class="image" style="background-image: url('{{ MEDIA_URL }}{{ item.game.image }}')"></div>
+                </div>
+                <div class="col-9">
+                    <div class="row cart-content">
+                        <div class="col-5">
+                            <h3 class="game-title v-center">{{ item.game.name }}</h3>
+                        </div>
+                        <div class="col-3">
+                            <div class="panel-price v-center">
+                                {% if item.game.sale == True %}
+                                <span class="price">
                                     <strike>${{ item.game.price }}</strike>
                                     ${{ item.game.sale_price }}
                                 </span>
-								{% else %}
-								${{ item.game.price }}
-								{% endif %}
-							</div>
-						</div>
+                                {% else %}
+                                ${{ item.game.price }}
+                                {% endif %}
+                            </div>
+                        </div>
                         <div class="col-4">
                             <form class="form-inline float-r v-center" method="post" action="{% url 'adjust_cart' item.id %}">
 
@@ -38,25 +45,26 @@
                                     </button>
                                 </span>
                             </form>
-						</div>
+                        </div>
 
-					</div>
-				</div>
-			</div>
-			{% endfor %}
-			<div class="row cart-panel padding">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="row cart-panel padding">
                 <div class="col-3"></div>
-				<div class="col-6">
+                <div class="col-6">
                     <div class="float-r v-center">
                         <span>Order Total:</span>
                         <span><i class="fas fa-euro-sign"></i>{{ total }}</span>
                     </div>
-				</div>
-                <div class="col-3">
-                    <a href="{% url 'checkout' %}" class="btn cart-btn float-r" role="button">Checkout</a>
                 </div>
-			</div>
-		</div>
-	</div>
+                <div class="col-3">
+                    <a href="{% url 'checkout' %}" class="btn btn-info float-r" role="button">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
 </div>
 {% endblock %}

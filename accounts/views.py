@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, reverse
-from django.contrib import messages
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
+from django.contrib import messages, auth
+from .forms import UserRegistrationForm, UserLoginForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -14,7 +14,7 @@ def register(request):
 
         if register_form.is_valid():
             register_form.save()
-            # username = register_form.cleaned_data.get('username')
+            username = register_form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! You are now able to log in')
             return redirect('login')
     else:
@@ -22,6 +22,31 @@ def register(request):
 
     return render(request, 'accounts/register.html', {'register_form': register_form})
 
+
+def login(request):
+    """A view that manages the login form"""
+    if request.method == 'POST':
+        user_form = UserLoginForm(request.POST)
+        if user_form.is_valid():
+            user = auth.authenticate(request.POST['username_or_email'],
+                                     password=request.POST['password'])
+
+            if user:
+                auth.login(request, user)
+                messages.success(request, f"You have successfully logged in")
+
+                if request.GET and request.GET['next'] !='':
+                    next = request.GET['next']
+                    return HttpResponseRedirect(next)
+                else:
+                    return redirect(reverse('index'))
+            else:
+                user_form.add_error(None, "Your username or password are incorrect")
+    else:
+        user_form = UserLoginForm()
+
+    args = {'user_form': user_form, 'next': request.GET.get('next', '')}
+    return render(request, 'accounts/login.html', args)
 
 @login_required
 def profile(request):

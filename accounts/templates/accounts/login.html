@@ -3,12 +3,12 @@
 {% block content %}
 <div class="container">
     <div class="col-md-6 content mt-4">
-        <form method="post" action="{% url 'login' %}" class="accountform">
+        <form method="post" action="{% url 'login' %}?next={{ next }}" class="accountform">
             <fieldset class="form-group">
                 <legend>Login</legend>
                 <hr class="mt-0">
                 {% csrf_token %}
-                {{ form | as_bootstrap }}
+                {{ user_form | as_bootstrap }}
 
                 <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
 
