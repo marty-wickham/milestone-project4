@@ -78,6 +78,14 @@ td {
     transition: 200ms;
 }
 
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    border: 1px solid white;
+}
 
 /*------------------------- Footer -------------------------*/
 
@@ -111,18 +119,28 @@ footer {
 
 
 /* Found out a way to maintain aspect ratio, using padding-top to determine the dimension of height by forcing height=0" */
-.carousel-item {
+/* .carousel-item {
     position: relative; 
     height: 0;
     padding-top: 42%
-}
+} */
 
-.carousel-item img {
+/* .carousel-item img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+} */
+
+.home-bg-img {
+    min-height: 90vh;
+    margin: 0;
+    background-image: url("https://external-preview.redd.it/7lSxudR6vvRuq9h8GMzfUANOJN2CZ9jzlrDrYYC3cL8.jpg?auto=webp&s=da49f9793e8b7dec26ad423cfc193785947b87a2");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0px;
 }
 
 
