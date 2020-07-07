@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid pb-5">
 	<div class="container pt-3">
 		<div class="row">
             <div class="col-12">
@@ -9,7 +9,7 @@
             </div>
             
 			{% for game in games %}
-			<div class="col-10 col-sm-6 col-md-4 col-lg-3 mb-3 mx-auto">
+			<div class="col-10 col-sm-6 col-md-4 col-lg-3 mb-4 mx-auto">
                 <a class="game-link" href="{% url 'game_details' game.id %}">
                     <div class="panel"> 
                         <div class="image" style="background-image: url('{{ MEDIA_URL }}{{ game.image}}')"></div>

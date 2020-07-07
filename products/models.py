@@ -33,8 +33,6 @@ class Game(models.Model):
         ('18', '18'),
     ]
 
-    # DISCOUNT_CHOICES = [(i, i) for i in range(5, 96, 5)]
-
     name = models.CharField(max_length=120, default='')
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -43,9 +41,13 @@ class Game(models.Model):
     genre_two = models.CharField(max_length=17, choices=GENRE_CHOICES, blank=True)
     genre_three = models.CharField(max_length=17, choices=GENRE_CHOICES, blank=True)
     works_on = models.CharField(max_length=7, choices=WORKS_ON_CHOICES, blank=False)
+    works_on_two = models.CharField(max_length=7, choices=WORKS_ON_CHOICES, blank=True)
+    works_on_three = models.CharField(max_length=7, choices=WORKS_ON_CHOICES, blank=True)
     release_date = models.DateField()
     company = models.CharField(max_length=30)
     pegi_rating = models.CharField(max_length=2, choices=PEGI_RATING_CHOICES, blank=True)
+    single_player = models.BooleanField()
+    multiplayer = models.BooleanField()
     discount = models.PositiveSmallIntegerField(blank=True, null=True)
     sale_price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, default=0)
     banner_image = models.ImageField(upload_to='images', blank=True)

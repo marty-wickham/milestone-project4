@@ -19,7 +19,9 @@ def game_details(request, pk):
     review"""
     game = get_object_or_404(Game, pk=pk)
     reviews = Review.objects.filter(game=game).order_by("-date_posted")
-    user_review = Review.objects.filter(user=request.user, game=game)
+    user = request.user
+    if request.user.is_authenticated:
+        user_review = Review.objects.filter(user=user, game=game)
     review_count = game.reviews.count()
     sum = 0
     avg_rating = 0
