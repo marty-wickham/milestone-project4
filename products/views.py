@@ -38,7 +38,7 @@ def game_details(request, pk):
         if review_form.is_valid():
 
             if user_review:
-                messages.error(request, "You have already given your review on this game.")
+                messages.error(request, "You have already given your review on this game. You may only leave one review per game.")
             else:
                 review = review_form.save(commit=False)
                 review.user = request.user

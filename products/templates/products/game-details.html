@@ -72,6 +72,22 @@
 								<th>PEGI:</th>
 								<td>{{ game.pegi_rating }}</td>
 							</tr>
+                            <tr>
+								<th>Single-player:</th>
+                                {% if game.single_player %}
+								    <td>Yes</td>
+                                {% else %}
+                                    <td>No</td>
+                                {% endif %}
+							</tr>
+                            <tr>
+								<th>Multiplayer:</th>
+                                {% if game.multiplayer %}
+								    <td>Yes</td>
+                                {% else %}
+                                    <td>No</td>
+                                {% endif %}
+							</tr>
 						</tbody>
 					</table>
 				</aside>
@@ -81,7 +97,7 @@
 </div>
 
 <!-- User review section -->
-<div class="container-fluid">
+<div class="container-fluid pt-5">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
