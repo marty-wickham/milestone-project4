@@ -8,62 +8,63 @@
         </div>
     </div>
 {% else %}
-    <div class="row pt-3">
+     <div class="row pt-3">
         <div class="col-md-8 offset-md-2">
             {% for item in cart_items %}
+
             <div class="row cart-panel">
-                <div class="col-3 cart-image-col">
-                    <div class="image" style="background-image: url('{{ MEDIA_URL }}{{ item.game.image }}')"></div>
-                </div>
-                <div class="col-9">
-                    <div class="row cart-content">
-                        <div class="col-5">
-                            <h3 class="game-title v-center">{{ item.game.name }}</h3>
+                <div class="col-8 cart-image-col">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="image" style="background-image: url('{{ MEDIA_URL }}{{ item.game.image }}')"></div>
                         </div>
-                        <div class="col-3">
-                            <div class="panel-price v-center">
-                                {% if item.game.sale == True %}
+                        <div class="col-sm-6" style="text-align: center;">
+                                <h3 class="game-title v-center">Knights of The Old Republic 2</h3>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-4">
+                    <div class="row cart-inner-row">
+                    <div class="col-sm-4">
+                            {% if item.game.sale == True %}
                                 <span class="price">
                                     <strike>${{ item.game.price }}</strike>
                                     ${{ item.game.sale_price }}
                                 </span>
-                                {% else %}
-                                ${{ item.game.price }}
-                                {% endif %}
-                            </div>
+                            {% else %}
+                                <span class="price v-center float-r">${{ item.game.price }}</span>
+                            {% endif %}
                         </div>
-                        <div class="col-4">
-                            <form class="form-inline float-r v-center" method="post" action="{% url 'adjust_cart' item.id %}">
-
-                                {% csrf_token %}
-                                <label class="form-group-addon" for="quantity">Qty</label>
-                                <input name="quantity" type="number" min="0" max="3" class="cart-input" value="{{ item.quantity }}">
+                        <div class="col-sm-8">
+                            <form class="form-inline float-r v-center" method="post" action="/cart/adjust/2">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="3E8XN5NdZoYgfdeIvASxmD0bTbuTdtn1FpwKPHmnTQjBSQyjCBwkD5LdGdUsEraF">
+                                <label class="form-group-addon cart-label" for="qty">Qty</label>
+                                <input name="quantity" type="number" min="0" max="3" class="cart-input" value="1">
                                 <span>
                                     <button type="submit" class="icon-btn">
-                                        <i class="far fa-check-circle cart-btn"></i>
+                                        <i class="far fa-check-circle btn-info"></i>
                                     </button>
                                 </span>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
-            {% endfor %}
-            <div class="row cart-panel padding">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <div class="float-r v-center">
-                        <span>Order Total:</span>
-                        <span><i class="fas fa-euro-sign"></i>{{ total }}</span>
-                    </div>
+        {% endfor %}
+        <div class="row cart-panel padding">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="float-r v-center">
+                    <span>Order Total:</span>
+                    <span><i class="fas fa-euro-sign"></i>{{ total }}</span>
                 </div>
-                <div class="col-3">
-                    <a href="{% url 'checkout' %}" class="btn btn-info float-r" role="button">Checkout</a>
-                </div>
+            </div>
+            <div class="col-3">
+                <a href="{% url 'checkout' %}" class="btn btn-info float-r" role="button">Checkout</a>
             </div>
         </div>
     </div>
+</div>
 {% endif %}
 </div>
 {% endblock %}

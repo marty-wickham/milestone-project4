@@ -57,6 +57,10 @@ td {
     margin-bottom: 0;
 }
 
+label {
+    margin-bottom: 0;
+}
+
 
 /*------------------------- Navbar -------------------------*/
 
@@ -189,8 +193,8 @@ footer {
     display: none;
 }
 
-.cart-form {
-    display: inline-block;
+.cart-inner-row {
+    height: 100%;
 }
 
 .cart-btn-alt {
@@ -252,12 +256,15 @@ strike{
 }
 
 .cart-image-col {
-    padding: 0;
+    padding-left: 0;
 }
 
 .cart-input {
-    width: 33%;
-    height: 24px;
+    width: 2.5rem;
+}
+
+.cart-label {
+    display: inline;
 }
 
 .cart-content {
