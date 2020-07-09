@@ -75,7 +75,7 @@
 
                             <h3 class="game-title title-height">{{ game.name }}</h3>
                             
-                            <form class="cart-form" method="post" action="{% url 'add_to_cart' game.id %}">
+                            <form class="add-cart-form" method="post" action="{% url 'add_to_cart' game.id %}">
                                 {% csrf_token %}
                                 <input name="quantity" type="number" value="1" class="form-control panel-input">
                                 <button class="btn cart-btn-alt" type="submit">

@@ -28,6 +28,12 @@ body {
     transform: translateY(-50%)
 }
 
+.h-center {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
 .vh-center {
     position: relative;
     top: 50%;
@@ -106,6 +112,10 @@ footer {
     font-weight: 500;
     margin-bottom: 0;
     line-height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .price-l {
@@ -155,7 +165,6 @@ footer {
 }
 
 .panel {
-    height: 100%;
     border: 1px solid #ddd;
     padding: 0;
     box-shadow: 1px 1px #a9a4a4;
@@ -191,6 +200,10 @@ footer {
 
 .panel-input {
     display: none;
+}
+
+.add-cart-form {
+    display: inline-block;
 }
 
 .cart-inner-row {
@@ -255,8 +268,15 @@ strike{
     margin-bottom: .5rem;
 }
 
-.cart-image-col {
+.col-no-left {
     padding-left: 0;
+}
+
+.cart-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .cart-input {
