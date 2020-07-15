@@ -12,7 +12,12 @@ def cart_contents(request):
 
     for id, quantity in cart.items():
         game = get_object_or_404(Game, pk=id)
-        total += quantity * game.price
+
+        if game.sale_price:
+            total += quantity * game.sale_price
+        else:
+            total += quantity * game.price
+
         product_count += quantity
         cart_items.append({'id': id, 'quantity': quantity, 'game': game})
 

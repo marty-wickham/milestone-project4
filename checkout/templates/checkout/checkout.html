@@ -14,8 +14,13 @@
 
 {% block content %}
 <div class="container">
+    <div class="row pt-3">
+        <div class="col-12">
+            <h2>Review Order</h2>
+            <hr>
+        </div>
+    </div>
 	<div class="row">
-        <!-- <h3>Order Review</h3> -->
 		{% for item in cart_items %}
 		<div class="col-12 col-sm-4">
 			<div class="checkout" style="background-image: url('{{ MEDIA_URL }}{{ item.game.image }}')"></div>
@@ -26,30 +31,44 @@
 		</div>
 
 		<div class="col-3 col-sm-2">
-			<div class="v-center float-r">
-				{% if game.sale_price %}
-				<span class="price">
-                    <strike>${{ item.game.price }}</strike>
-                    ${{ item.game.sale_price }}
-                </span>
-				{% else %}
-				    ${{ item.game.price }}
-				{% endif %}
-			</div>
+            {% if item.game.sale_price %}
+            <span class="price">
+                <strike>${{ item.game.price }}</strike>
+                <p>${{ item.game.sale_price }}</p>
+            </span>
+            {% else %}
+                ${{ item.game.price }}
+            {% endif %}
 		</div>
 
 		<div class="col-2">
 			<p class="v-center">x {{ item.quantity }}</p>
 		</div>
 		{% endfor %}
-		<div class="col-12">
+	</div>
+    <div class="row">
+        <div class="col-12 col-md-11 pt-4">
+            <div class="float-r v-center total">
+                <p class="mb-0">Order Total: <span><i class="fas fa-euro-sign"></i> {{ total }}</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pt-4">
+            <h2>Payment Details</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
 			<form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-				<legend>Payment Details</legend>
+
+                {% csrf_token %}
 
 				<div id="credit-card-errors" style="display: none;">
 					<div id="alert-message block-message error" class="stripe-error-message"></div>
 				</div>
-
 				<div class="row">
 					<div class="form-group col-md-6">
 						{{ order_form | as_bootstrap }}
@@ -59,15 +78,11 @@
 						{{ payment_form | as_bootstrap }}
 					</div>
 				</div>
-
-
-				{% csrf_token %}
 				<div class="form-group col-md-12">
 					<input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
                 </div>
 			</form>
 		</div>
-
-	</div>
+    </div>
 </div>
 {% endblock %}

@@ -24,10 +24,10 @@
 			<div class="col-6 col-sm-4 col-md-6">
 				<div class="row cart-inner-row">
 					<div class="col-sm-4">
-						{% if item.game.sale == True %}
+						{% if item.game.sale_price %}
 						<span class="price">
                                     <strike>${{ item.game.price }}</strike>
-                                    ${{ item.game.sale_price }}
+                                    <p class="mb-0">${{ item.game.sale_price }}</p>
                                 </span>
 						{% else %}
 						<span class="price v-center float-r">${{ item.game.price }}</span>
@@ -52,13 +52,12 @@
 		{% endfor %}
 		<div class="row cart-panel padding">
 			<div class="col-6 col-sm-8">
-				<div class="float-r v-center">
-					<span>Order Total:</span>
-					<span><i class="fas fa-euro-sign"></i>{{ total }}</span>
+				<div class="float-r v-center total">
+					<p class="mb-0">Order Total: <span><i class="fas fa-euro-sign"></i> {{ total }}</span></p>
 				</div>
 			</div>
 			<div class="col-6 col-sm-4">
-				<a href="{% url 'checkout' %}" class="btn btn-info h-center" role="button">Checkout</a>
+				<a href="{% url 'checkout' %}" class="btn btn-info h-center m-1" role="button">Checkout</a>
 			</div>
 		</div>
 	</div>
