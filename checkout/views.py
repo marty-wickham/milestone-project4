@@ -9,7 +9,6 @@ from .models import OrderLineItem
 from django.contrib import messages
 
 
-# Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
@@ -27,7 +26,11 @@ def checkout(request):
             total = 0
             for id, quantity in cart.items():
                 game = get_object_or_404(Game, pk=id)
-                total += quantity * game.price
+                if game.sale_price:
+                    total += quantity * game.sale_price
+                else:
+                    total += quantity * game.price
+
                 order_line_item = OrderLineItem(
                     order=order,
                     game=game,
@@ -38,19 +41,19 @@ def checkout(request):
             try:
                 customer = stripe.Charge.create(
                     amount=int(total * 100),
-                    currency="EUR ",
+                    currency="EUR",
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id'],
                 )
+                if customer.paid:
+                    messages.error(request, "You have successfully paid")
+                    request.session['cart'] = {}
+                    return redirect(reverse('index'))
+                else:
+                    messages.error(request, "Unable to make card payment")
+
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
-
-            if customer.paid:
-                messages.error(request, "You have successfully paid")
-                request.session['cart'] = {}
-                return redirect(reverse('products'))
-            else:
-                messages.error(request, "Unable to make card payment")
 
         else:
             print(payment_form.errors)
