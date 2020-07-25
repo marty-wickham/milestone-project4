@@ -185,18 +185,12 @@ footer {
     min-height: 100px;
 }
 
-
-.title-height {
+.panel-title {
+    font-size: 1.2rem;        
+    font-weight: 500;
+    color: #443f3f;
     min-height: 46px;
 }
-
-/* .panel-price {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-weight: 500;
-    font-size: 1.2rem;
-    float: right;
-} */
 
 .panel-price {
     color: #443f3f;
@@ -256,6 +250,15 @@ strike{
     font-size: 1.2rem;        
     font-weight: 500;
     color: #443f3f;
+    text-align: center;
+}
+
+@media(min-width: 576px) {
+    .game-title {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%)
+    }
 }
 
 .game-link:hover {
@@ -298,19 +301,22 @@ strike{
     height: 100%;
 }
 
-.cart-total {
-    padding: 10px;
-    float: right;
-} 
-
 .fa-check-circle {
     font-size: 24px;
     border-radius: 50%;
 }
 
-.total {
+.cart-total {
     font-size: 1.2rem;
     font-weight: 500;
+}
+
+@media(min-width: 452px) {
+    .cart-total {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }
 
 
@@ -331,6 +337,9 @@ strike{
     }
 }
 
+.qty {
+    margin-bottom: 0;
+}
 
 /*------------------------- Profile page -------------------------*/
 
@@ -413,6 +422,8 @@ strike{
     display: inline-block;
     text-align: center;
     padding-right: 1rem;
+    width: 150px;
+    max-width: 150px;
 }
 
 .review-user {

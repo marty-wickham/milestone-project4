@@ -15,7 +15,7 @@
                         <div class="image" style="background-image: url('{{ MEDIA_URL }}{{ game.image}}')"></div>
                         <div class="panel-body">
 
-                            <h3 class="game-title title-height">{{ game.name }}</h3>
+                            <h3 class="panel-title">{{ game.name }}</h3>
                             
                             <form class="add-cart-form" method="post" action="{% url 'add_to_cart' game.id %}">
                                 {% csrf_token %}
