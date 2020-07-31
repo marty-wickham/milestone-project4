@@ -160,6 +160,7 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
@@ -169,7 +170,7 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET = os.environ.get('STRIPE_SECRET_KEY')
@@ -181,4 +182,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
