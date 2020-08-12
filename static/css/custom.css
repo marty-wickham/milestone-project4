@@ -306,13 +306,13 @@ strike{
     border-radius: 50%;
 }
 
-.cart-total {
+.order-total {
     font-size: 1.2rem;
     font-weight: 500;
 }
 
 @media(min-width: 452px) {
-    .cart-total {
+    .order-total {
         position: relative;
         top: 50%;
         transform: translateY(-50%);
@@ -338,7 +338,9 @@ strike{
 }
 
 .qty {
-    margin-bottom: 0;
+    margin-bottom: 0; 
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /*------------------------- Profile page -------------------------*/

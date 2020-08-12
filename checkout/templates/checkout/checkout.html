@@ -37,7 +37,7 @@
                 <p>${{ item.game.sale_price }}</p>
             </span>
             {% else %}
-                ${{ item.game.price }}
+                <p class="price">${{ item.game.price }}</p>
             {% endif %}
 		</div>
 
@@ -48,7 +48,7 @@
 	</div>
     <div class="row">
         <div class="col-12 col-md-11 pt-4">
-            <div class="float-r v-center total">
+            <div class="order-total float-r v-center">
                 <p class="mb-0">Order Total: <span><i class="fas fa-euro-sign"></i> {{ total }}</span></p>
             </div>
         </div>
