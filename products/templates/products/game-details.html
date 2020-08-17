@@ -2,12 +2,12 @@
 {% load bootstrap_tags %}
 {% block content %}
 <!-- Full width background image -->
-<div class="container-fluid game-banner">
-	<div class="bg-img" style="background-image: url('{{ MEDIA_URL }}{{ game.banner_image}}')">
-		<button type="button" class="icon-btn vh-center" data-toggle="modal" data-target="#video_modal">
+<div class="bg-img-frame">
+    <div class="bg-img" style="background-image: url('{{ MEDIA_URL }}{{ game.banner_image}}')">
+        <button type="button" class="icon-btn vh-center" data-toggle="modal" data-target="#video_modal">
             <i class="far fa-play-circle play-btn" data-toggle="modal" data-target="#video_modal"></i>
         </button>
-	</div>
+    </div>
 </div>
 
 <!-- Game Info -->
@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h1 class="title-padding">{{ game.name }}</h1>
+				<h2 class="title-padding">{{ game.name }}</h2>
 			</div>
             <div class="col-md-4">
                 <div class="flag">

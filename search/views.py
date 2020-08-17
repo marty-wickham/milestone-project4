@@ -5,5 +5,5 @@ from products.models import Game
 
 
 def do_search(request):
-    games = Game.objects.filter(name__icontains-request.GET['q'])
-    return render(request, "products.html", {"games": games})
+    games = Game.objects.filter(name__icontains=request.GET['q'])
+    return render(request, "products/games.html", {"games": games})
