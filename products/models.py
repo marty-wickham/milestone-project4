@@ -34,7 +34,7 @@ class Game(models.Model):
     ]
 
     name = models.CharField(max_length=120, default='')
-    description = models.TextField()
+    description = models.TextField(default='Description missing.')
     price = models.DecimalField(max_digits=5, decimal_places=2)
     image = models.ImageField(upload_to='images')
     genre = models.CharField(max_length=17, choices=GENRE_CHOICES, blank=False)
@@ -63,10 +63,10 @@ class Review(models.Model):
     title = models.CharField(max_length=40, null=False)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
-    rating = models.IntegerField(blank=False) 
+    rating = models.IntegerField(blank=False)
     game = models.ForeignKey(Game, related_name="reviews",
-                                on_delete=models.CASCADE,
-                                related_query_name="review", null=True)
+                             on_delete=models.CASCADE,
+                             related_query_name="review", null=True)
     user = models.ForeignKey(User, related_name="reviews",
                              on_delete=models.CASCADE,
                              related_query_name="review", null=True)
