@@ -1,10 +1,7 @@
 from django.test import TestCase
 from django.shortcuts import get_object_or_404
-from .models import Game, Review
-from products.test_models import TestReviewModel
-
-
-test_review_model = TestReviewModel
+from .models import Review
+from products.test_models import create_game, create_user
 
 
 class TestViews(TestCase):
@@ -15,8 +12,7 @@ class TestViews(TestCase):
         self.assertTemplateUsed(page, "products/games.html")
 
     def test_get_game_details_page(self):
-        game = Game.objects.create(name="Test Game", price=5,
-                                   release_date="2012-12-12")
+        game = create_game(self)
 
         page = self.client.get("/products/{0}/".format(game.id))
         self.assertEqual(page.status_code, 200)
@@ -26,11 +22,16 @@ class TestViews(TestCase):
         page = self.client.get("/products/1/")
         self.assertEqual(page.status_code, 404)
 
-    # def test_valid_form(self):
-    #     review = test_review_model.create_review()
+    def test_post_create_review(self):
+        game = create_game(self)
+        user = create_user(self)
 
-    def test_create_review(self):
-        response = self.client.post("/products/game-details/",
-                                    {"title": "Test Review"})
-        review = get_object_or_404(Review, pk=1)
-        self.assertEqual(review.title, "Test Review")
+        response = self.client.post("/products/{0}/".format(game.id),
+                                    data={"title": "Test Post Review",
+                                          "content": "Here is some test content",
+                                          "rating": 5, "game": game,
+                                          "user": user})
+
+        # review = get_object_or_404(Review, pk=1)
+        # self.assertEqual(review.title, "Test Post Review")
+        self.assertEqual(response.status_code, 200)

@@ -20,6 +20,7 @@ def game_details(request, pk):
     game = get_object_or_404(Game, pk=pk)
     reviews = Review.objects.filter(game=game).order_by("-date_posted")
     review_count = game.reviews.count()
+    avg_rating = 0
 
     if review_count > 0:
         sum = 0
@@ -28,23 +29,27 @@ def game_details(request, pk):
         avg_rating = round(sum / review_count, 1)
 
     if request.method == 'POST':
-        review_form = ReviewForm(request.POST)
+        review_form = ReviewForm(request.POST, request.FILES)
 
         if review_form.is_valid():
-            user = request.user
-            
+
             if request.user.is_authenticated:
+                user = request.user
                 user_review = Review.objects.filter(user=user, game=game)
 
-            if user_review:
-                messages.error(request, "You have already given your review on this game. You may only leave one review per game.")
+                if user_review:
+                    messages.error(request,
+                                   "You have already given your review on this game. You may only leave one review per game.")
+
+                else:
+                    review = review_form.save(commit=False)
+                    review.user = user
+                    review.game = game
+                    review.save()
+                    messages.success(request, f'Your review has been created!')
+                    return redirect('game_details', game.pk)
             else:
-                review = review_form.save(commit=False)
-                review.user = user
-                review.game = game
-                review.save()
-                messages.success(request, f'Your review has been created!')
-                return redirect('game_details', game.pk)
+                return redirect("login")
     else:
         review_form = ReviewForm()
 
