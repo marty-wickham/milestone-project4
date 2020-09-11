@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 
-# Create your views here.
+
 def view_cart(request):
     """A view that renders the cart contents page"""
     return render(request, 'cart/cart.html')
@@ -9,12 +10,15 @@ def view_cart(request):
 def add_to_cart(request, id):
     """Add A quantity of the specifies product to the cart"""
     quantity = int(request.POST.get('quantity'))
-
     cart = request.session.get('cart', {})
-    if id in cart:
-        cart[id] += int(cart[id]) + quantity
+
+    if id in list(cart.keys()):
+        if cart[id] < 3:
+            cart[id] += quantity
+        else:
+            messages.error(request, f"Max limit 3 per title.")
     else:
-        cart[id] = cart.get(id, quantity)
+        cart[id] = quantity
 
     request.session['cart'] = cart
     return redirect(reverse('all_games'))

@@ -35,7 +35,7 @@ def login(request):
                 auth.login(request, user)
                 messages.success(request, f"You have successfully logged in")
 
-                if request.GET and request.GET['next'] !='':
+                if request.GET and request.GET['next'] != '':
                     next = request.GET['next']
                     return HttpResponseRedirect(next)
                 else:
@@ -45,8 +45,10 @@ def login(request):
     else:
         user_form = UserLoginForm()
 
-    args = {'user_form': user_form, 'next': request.GET.get('next', '')}
-    return render(request, 'accounts/login.html', args)
+    context = {'user_form': user_form,
+               'next': request.GET.get('next', '')}
+
+    return render(request, 'accounts/login.html', context)
 
 @login_required
 def profile(request):
