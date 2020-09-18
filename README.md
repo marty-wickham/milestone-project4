@@ -166,6 +166,7 @@ consist of a navigation bar that contains the logo of the business and the main 
 * [Python 3](https://www.python.org/) - Python is an interpreted, high-level, general-purpose programming language. In this project it was
                                         used to manage the back end development of the project.
 * [Django](https://www.djangoproject.com/) - Django is a free opensource, high level Python framework. It handles a lot of the work of building a fullstack website.
+* [Stripe](https://stripe.com/en-ie) - Stripe is a software as a service. The stripe API is used to handle payment processing for this project.
 * [Heroku](https://en.wikipedia.org/wiki/Heroku) - A cloud platform as a service. Heroku is used to deploy this project.
 * [S3 Buckets](https://www.mongodb.com/cloud/atlas) - An Amazon web service, S3 (Simple Storage Solution) is a storage service used to host all of the media and the
                                                         static files for this project.
@@ -241,17 +242,46 @@ include:
 1. Add multiple items to cart.
 2. As items are added check "product count" variable displayed in the navbar increases by 1 with each request.
 3. Once an item has been added three times check "Max limit" error message is displayed.
-4. Add games to the cart with and withoput sale prices to test the "total" variable.
+4. Add games to the cart with and without sale prices to test the "total" variable.
 5. On the "Cart" page, remove items from the cart and submit.
 6. Check "quantity" value has changed in the forms quantiity input.
-7. Remove a game completely from the cart.
-8. Check that the game is removed.
+7. Change an items quantity value to 0.
+8. Check that the game is completely removed from the cart.
 9. Remove all games from the cart and check for the "Empty shopping cart" message.
 
-<!-- * Delete Recipe Feature:
-1. Login and navigate to "My recipes".
-2. Click a recipe to view and navigate to the "view recipe" page.
-3. Click the delete button and check to see that the user is redirected to the "recipes" page and the recipe has been deleted.
+* Cart - links:
+1. Click the different "Add to cart" links throughout the site.
+2. Check that the user is returned to the page they are currently viewing.
+
+* Checkout form - empty/partially filled form:
+1. Fill out the form leaving the first field empty.
+2. Try to submit a partially filled form and check for the required field messages.
+3. Repeat for each field.
+
+* Review form - star rating:
+1. Hover over the first star in the rating.
+2. Move to the right gradually over each star and to see if it becomes highlighted.
+3. At the last star, move back from left over each star checking that each star becomes unhighlighted as you move.
+4. Move over a random star. Check all the stars up to that star become highlighted at the same time.
+5. Click a random star to leave a rating.
+6. Hover over the higher rating stars to see that they highlight, displaying the option to click choose anothe rating.
+
+* Review form - empty/partially filled form:
+1. Fill out the form leaving the first field empty.
+2. Try to submit a partially filled form and check for the required field messages.
+3. Repeat for each field.
+
+* Review form - review limit per user:
+1. Log in as "TestUser".
+2. Fill out the form and post a review.
+3. Check for "review posted" message and review.
+4. Fill out the form again and try post a second review for the same game.
+5. Check for "One review per user" error message.
+
+
+### Autmoated Testing
+For this project I used Django's built in TestCase class to test the products app. Tests were written to test the product models, forms and views.
+
 
 I used a *code validator* on [W3 Markup Validation Service](https://validator.w3.org/#validate_by_input) to checks for any errors that needed to be 
 fixed in my code. 
@@ -259,40 +289,65 @@ fixed in my code.
 Finally, I posted my project in the peer-code-review channel on Slack and received some very helpful criticism to help me fix some mistakes that 
 slipped under the rader.
 
-## Features Left to implement
-The only feature in the project I could not get working was the search bar functionality. The search bar does not yield
-any results at the moment. 
+### Bugs
+Bugs I am aware of:
+1. The star rating does not highlight completely effectively when you hover over any random star. However if you move to the left or right, the stars
+    will then highlight.
+2. When adding items to the cart it would be preferable that the page was not reloaded and hence, the use would remain where they are on a page.
 
-## Deployment 
+## Features Left to implement
+1. I would like to add in an order history section to the profile page of the site to allow users to view the details of past orders.
+2. On the "Game details" page I think a carousel modal with images would be a nice feature and give the site more content.
+3. A delete button to completely remove an item from the cart in one click.
+4. An "Empty cart" button to remove all items from the cart in one click.
+5. After being redirectd to sign in to leave a review, I would have liked that when the user signs in they are redirectd to the review form.
+6. On the Game Detials page, the video modal does not stop playing when you click out of it. You must first click pause or else it will keep playing.
+    It would be better that the video automatically stop when the user clicks out of the video.
+
+
+## Deployment
+
+### Gitpod and Github
 1. The project was written and developed in the Gitpod IDE.
 2. A local repository was intialized using Git. Regular changes were commited to the local repository.
-3. Github was used as a remote repository, and at the end of each development session, all local commits were pushed to (https://github.com/martycistudent/milestone-project3)
-4. The project’s source file was published from GitHub repository to GitHub pages using GitHub default settings via the master branch.
-5. The project was linked to Heroku for deployment, a requirements.txt file and a Procfile were created to deploy the project on Heroku.
-6. Configuration variables had to be set in order to get the project running. These had to be set in both the Gitpod IDE and on Heroku.
-These included, PORT, IP, Mongo URI and a SECRET KEY.
-5. The Project’s source file is now published as a site on Heroku at [Grubhub](https://database-milestone-project.herokuapp.com/)
+3. Github was used as a remote repository, and at the end of each development session, all local commits were pushed to (https://github.com/martycistudent/milestone-project4)
+4. At the start of the project configuration variables were set in and env.py file. This included the SECRET_KEY, DATABSE_URL, HOST_NAME, DEVELOPMENT variable, STRIPE keys,
+    AMAZON_S3 keys. These had to be set in both the Gitpod IDE and on Heroku. The env.py file was added to the a .gitignore file so as not to be included in the Github repository.
+
+### AWS S3 Buckets
+1. S3 buckets was used to host the media and static files for this project. This was necessary for deployment as Heroku does not provide a standard file system.
+2. Create a new S3 bucket. Add all of the relevant settings to allow public access and hosting for static files.
+3. Create a new group, matching the group name with the bucket name.
+4. Add the relevant settings and policies.
+5. Add a new user to this group with programmatic access. 
+6. The AWS_ACCESS keys were then added to the projects env.py file.
+7. Install boto3 and django-storages in the CLI to allow Django to use S3 as a storage loaction.
+8. The relevant settings were then added to to the settings.py file in the project folder.
+9. I then ran a collectstatic command to upload the projects static files into the new S3 bucket.
+
+### Heroku
+1. To deploy the project on Heroku a new app was created via the CLI. The dependancy guncicorn was installed to serve the website on Heroku.
+2. The project was linked to Heroku for deployment, a requirements.txt file and a Procfile were created to deploy the project on Heroku.
+3. In Heroku in the project application, Heroku Postres database was added into the application. The databse URI was then added to the projects
+    env.py file.
+4. I then installed dj-database-url updated the settings.py file to allow the project to connect to the Postgres database URL.
+5. The Github repository for the code was then linked to the Heroku aplication to enable the apllication to be updated with a single push command.
+6. Finally in the Heroku dashboard all of the configuration variables from the env.py file were added to the Heroku application.
+5. The Project’s source file is now published as a site on Heroku at [PEWN](https://eshop-project4.herokuapp.com/)
+
 
 ## Credits
 ### Media 
-The full width background image on the index page of the website was taken from a stock image website called [shutterstock](https://www.shutterstock.com/search/food+background) 
+All of the images for this project were searched and found on google images. All of the game trailers for this project came from Youtube.com.
 
 ### Acknowledgements 
 #### Front End Design
-For the main layout of this project I took inspiration from [Jamie Oliver's cooking website](https://www.jamieoliver.com/) and [BBC goodfood](https://www.bbcgoodfood.com/).
-This is also where I found most of the recipes to populate the website. 
+For the main layout of this project I took inspiration from [GOG.com](https://www.gog.com/).
 
 #### Back End
-To complete this project I relied on additional reasearch in order to get the reistration and login features of the page fully 
-functional.
+To complete this project I relied on additional reasearch in order to get the star rating working for my review form.
+* (https://codepen.io/depy/pen/vEWWdw)
 
-To help me understand the logic required for the registration and login features of my site I watched this video:
-* (https://www.youtube.com/watch?v=vVx1737auSE)
-In order to create a form that could check whether or not the passwords enterd matched certain criteria I found these pages
-that helped me figure out how to access the values being entered, as well as the appropriate event handlers I needed to use.
-* (https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page/21727518)
-* (https://www.w3schools.com/howto/howto_js_password_validation.asp)
-To use message flashing I had to read the documentation for the Flask website to help me unserstand how Flask messagin worked.
-* (https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions)
-To get the search bar functioning I relied on the code provided to me by my mentor who helped me to undertsand how it worked
-* (https://github.com/5pence/recipeGlut/blob/master/app.py) -->
+During the project I had to upgrade Django to a newer version. In order to do that I watched Corey Schafer's Django series on youtube. Great guy.
+* (https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=1)
+

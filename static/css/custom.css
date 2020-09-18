@@ -67,6 +67,10 @@ label {
     margin-bottom: 0;
 }
 
+.padded {
+    padding: .5rem;
+}
+
 
 /*------------------------- Navbar -------------------------*/
 
@@ -524,5 +528,5 @@ strike{
 }
 
 .description {
-    white-space: pre-wrap;
+    white-space: pre-line;
 }

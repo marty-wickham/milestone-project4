@@ -11,6 +11,7 @@ from django.contrib import messages
 
 stripe.api_key = settings.STRIPE_SECRET
 
+
 @login_required()
 def checkout(request):
     if request.method == "POST":

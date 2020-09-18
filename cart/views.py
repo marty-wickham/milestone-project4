@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 from django.contrib import messages
 
 
@@ -21,7 +21,7 @@ def add_to_cart(request, id):
         cart[id] = quantity
 
     request.session['cart'] = cart
-    return redirect(reverse('all_games'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def adjust_cart(request, id):
